@@ -22,6 +22,8 @@ public class ExitStaging : MonoBehaviour
         Line.SetActive(false);
         stagingScale = new Vector2(0.1f, 0.1f);
 
+        Circle1.enabled = false;
+        Circle2.enabled = false;
         Circle1.fillAmount = 0;
         Circle2.fillAmount = 0;
     }
@@ -34,6 +36,8 @@ public class ExitStaging : MonoBehaviour
         if (exitButtonController.startStaging == true)
         {
             Line.SetActive(true);
+            Circle1.enabled = true;
+            Circle2.enabled = true;
 
             stagingScale.x += _growingSpeed * Time.deltaTime;
             Line.transform.localScale = stagingScale;
