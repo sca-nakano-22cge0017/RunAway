@@ -11,6 +11,5 @@ public class ExitButtonController : MonoBehaviour
     public void ButtonExit()
     {
         startStaging = true;
-        //Application.Quit();
     }
 }

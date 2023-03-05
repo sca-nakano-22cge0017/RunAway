@@ -31,7 +31,7 @@ public class ExitStaging : MonoBehaviour
         ExitButton = GameObject.Find("Exit");
         exitButtonController = ExitButton.GetComponent<ExitButtonController>();
 
-        if (exitButtonController.startStaging == false)
+        if (exitButtonController.startStaging == true)
         {
             Line.SetActive(true);
 
@@ -44,5 +44,18 @@ public class ExitStaging : MonoBehaviour
             Circle1.fillAmount += _rotateSpeed * Time.deltaTime;
             Circle2.fillAmount += _rotateSpeed * Time.deltaTime;
         }
+
+
+        if (Circle1.fillAmount >= 0.5)
+        {
+            StartCoroutine("ApplicationStop");
+        }
+    }
+
+    IEnumerator ApplicationStop()
+    {
+        yield return new WaitForSeconds(2);
+
+        Application.Quit();
     }
 }
