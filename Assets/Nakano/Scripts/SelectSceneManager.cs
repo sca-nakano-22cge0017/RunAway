@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class SelectSceneManager : MonoBehaviour
 {
     //主人公A
-    [SerializeField] private GameObject FlameA1;
+    [SerializeField] private GameObject FlameA1; //フレーム
     [SerializeField] private GameObject FlameA2;
-    [SerializeField] private GameObject CharacterA1;
+    [SerializeField] private GameObject CharacterA1; //立ち絵
     [SerializeField] private GameObject CharacterA2;
-    [SerializeField] private GameObject ExplanationA;
+    [SerializeField] private GameObject ExplanationA; //キャラ説明文
 
     //主人公B
     [SerializeField] private GameObject FlameB1;
@@ -20,15 +20,17 @@ public class SelectSceneManager : MonoBehaviour
     [SerializeField] private GameObject ExplanationB;
 
     //確認ウィンドウ
-    [SerializeField] private GameObject ConfirmationWindow;
-    [SerializeField] private GameObject ConfirmationText;
-    private int selectCharacter;
+    [SerializeField] private GameObject ConfirmationWindow; //確認ウィンドウ
+    [SerializeField] private GameObject ConfirmationText;　//確認テキスト
+    private static int selectCharacter; //どちらのキャラクターを選択したか
 
     int select = 0;
 
 
     void First() //初期状態
     {
+        select = 0;
+        
         FlameA1.SetActive(true);
         FlameA2.SetActive(false);
         CharacterA1.SetActive(true);
