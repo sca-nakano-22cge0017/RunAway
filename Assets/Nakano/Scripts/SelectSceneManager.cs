@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectSceneManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class SelectSceneManager : MonoBehaviour
 
     //確認ウィンドウ
     [SerializeField] private GameObject ConfirmationWindow;
+    [SerializeField] private GameObject ConfirmationText;
+    private int selectCharacter;
 
     int select = 0;
 
@@ -52,6 +55,8 @@ public class SelectSceneManager : MonoBehaviour
         CharacterB1.SetActive(true);
         CharacterB2.SetActive(false);
         ExplanationB.SetActive(false);
+
+        selectCharacter = 1;
     }
 
     void SelectB() //主人公Bを選択したとき
@@ -67,11 +72,25 @@ public class SelectSceneManager : MonoBehaviour
         CharacterB1.SetActive(false);
         CharacterB2.SetActive(true);
         ExplanationB.SetActive(true);
+
+        selectCharacter = 2;
     }
 
     void selectDecide() //確認Window表示
     {
         ConfirmationWindow.SetActive(true);
+
+        Text confirmation_text = ConfirmationText.GetComponent<Text>();
+        
+        switch(selectCharacter)
+        {
+            case 1:
+                confirmation_text.text = "主人公AでOK?";
+            break;
+            case 2:
+                confirmation_text.text = "主人公BでOK?";
+            break;
+        }
     }
     
     void Start()
