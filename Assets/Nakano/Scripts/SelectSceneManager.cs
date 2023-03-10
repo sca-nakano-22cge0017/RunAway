@@ -22,7 +22,7 @@ public class SelectSceneManager : MonoBehaviour
     //確認ウィンドウ
     [SerializeField] private GameObject ConfirmationWindow; //確認ウィンドウ
     [SerializeField] private GameObject ConfirmationText;　//確認テキスト
-    private static int selectCharacter; //どちらのキャラクターを選択したか
+    public static int selectCharacter; //どちらのキャラクターを選択したか
 
     int select = 0;
 

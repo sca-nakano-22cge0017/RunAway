@@ -900,7 +900,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "WASD\uFF1A\u9078\u629E\u3000Enter\u30AD\u30FC\uFF1A\u6C7A\u5B9A"
+  m_Text: "WASD\uFF1A\u9078\u629E\u3000Enter\uFF1A\u6C7A\u5B9A"
 --- !u!222 &830958465
 CanvasRenderer:
   m_ObjectHideFlags: 0
