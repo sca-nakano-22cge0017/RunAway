@@ -11,7 +11,7 @@ public class OpeningTextManager : MonoBehaviour
     string displayText;
     int textCharNumber; //表示する文字の数
     int displayTextSpeed;
-    [SerializeField] int speed = 40; //文字送りスピード
+    [SerializeField] int speed = 20; //文字送りスピード
     bool Return; //Enterが押されたかどうか判定
     bool textStop;
     bool x = true;
@@ -24,14 +24,8 @@ public class OpeningTextManager : MonoBehaviour
     void Update()
     {
         displayTextSpeed++;
-        if (displayTextSpeed % speed == 0)
+        if (displayTextSpeed % speed *Time.deltaTime == 0)
         {
-            /*if (textNumber == 4 && x == true)
-            {
-                displayText = displayText + "▽操作説明 \n １. マウスで視点変更 \n ２. WASDキーで移動";
-                x = false;
-            }*/
-
             if (textCharNumber != texts[textNumber].Length) //表示文字数が文字列の長さと異なるとき
             {
                 displayText = displayText + texts[textNumber][textCharNumber]; //n番目のn文字目を表示
