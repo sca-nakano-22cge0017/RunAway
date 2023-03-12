@@ -660,8 +660,8 @@ MonoBehaviour:
   BSmile: {fileID: 1881004164}
   BPanic: {fileID: 970086371}
   SerifB: {fileID: 845262332}
-  fadeoutSpeed: 255
-  fadeinSpeed: 255
+  fadeoutSpeed: 300
+  fadeinSpeed: 300
   WaitTime: 3
 --- !u!1 &1087789280
 GameObject:

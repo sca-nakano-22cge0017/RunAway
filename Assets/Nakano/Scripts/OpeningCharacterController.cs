@@ -14,6 +14,8 @@ public class OpeningCharacterController : MonoBehaviour
     [SerializeField] private GameObject APanic; //è≈ÇÈ
     [SerializeField] private GameObject SerifA; //ÉZÉäÉt
 
+
+
     Image fadeAlphaA1, fadeAlphaA2, fadeAlphaA3, fadeAlphaA4, fadeAlphaA5;
     float alphaA1, alphaA2, alphaA3, alphaA4, alphaA5;
 
@@ -29,6 +31,8 @@ public class OpeningCharacterController : MonoBehaviour
     Image fadeAlphaB1, fadeAlphaB2, fadeAlphaB3, fadeAlphaB4, fadeAlphaB5;
     float alphaB1, alphaB2, alphaB3, alphaB4, alphaB5;
 
+    Image fadeAlpha;
+    float alpha;
     bool fadeout;
     bool fadein;
     [SerializeField] private int fadeoutSpeed;
@@ -101,7 +105,84 @@ public class OpeningCharacterController : MonoBehaviour
         ASmile.SetActive(true);
         APanic.SetActive(true);
 
-        StartCoroutine("AillustManager");
+        //StartCoroutine("AillustManager");
+
+        switch (number)
+        {
+            case 0:
+                ANormal.SetActive(true);
+                break;
+            case 1:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    fadeout = true;
+                }
+                if (fadeout)
+                {
+                    FadeOut(fadeAlphaA1, alphaA1);
+                }
+                if (fadein)
+                {
+                    FadeIn(fadeAlphaA2, alphaA2);
+                }
+                break;
+            case 2:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    fadeout = true;
+                }
+                if (fadeout)
+                {
+                    FadeOut(fadeAlphaA2, alphaA2);
+                }
+                if (fadein)
+                {
+                    FadeIn(fadeAlphaA5, alphaA5);
+                }
+                break;
+            case 3:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    fadeout = true;
+                }
+                if (fadeout)
+                {
+                    FadeOut(fadeAlphaA5, alphaA5);
+                }
+                if (fadein)
+                {
+                    FadeIn(fadeAlphaA3, alphaA3);
+                }
+                break;
+            case 6:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    fadeout = true;
+                }
+                if (fadeout)
+                {
+                    FadeOut(fadeAlphaA3, alphaA3);
+                }
+                if (fadein)
+                {
+                    FadeIn(fadeAlphaA1, alphaA1);
+                }
+                break;
+            case 7:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    fadeout = true;
+                }
+                if (fadeout)
+                {
+                    FadeOut(fadeAlphaA1, alphaA1);
+                }
+                if (fadein)
+                {
+                    FadeIn(fadeAlphaA4, alphaA4);
+                }
+                break;
+        }
 
         SerifA.SetActive(true);
     }
@@ -118,10 +199,6 @@ public class OpeningCharacterController : MonoBehaviour
         number = 1;
         selectCharacter = SelectSceneManager.selectCharacter;
         First();
-
-        /*fadeSample = ANormal.GetComponent<Image>();
-        sampleAlpha = fadeSample.color.a;
-        fadeSample.color = new Color(255.0f, 255.0f, 255.0f, 255.0f);*/
     }
 
     void Update()
@@ -142,14 +219,14 @@ public class OpeningCharacterController : MonoBehaviour
         }
     }
 
-    void FadeOut(Image fadeAlpha,float alpha)
+    void FadeOut(Image fadeAlpha, float alpha)
     {
         alpha -= fadeoutSpeed * Time.deltaTime;
         fadeAlpha.color = new Color(255, 255, 255, alpha);
         if (alpha <= 0)
         {
             fadeout = false;
-            fadein = true;
+            alpha = 0.0f;
         }
     }
 
@@ -160,10 +237,11 @@ public class OpeningCharacterController : MonoBehaviour
         if (alpha >= 255)
         {
             fadein = false;
+            alpha = 255.0f;
         }
     }
 
-    IEnumerator AillustManager()
+    /*IEnumerator AillustManager()
     {
         switch (number)
         {
@@ -246,5 +324,5 @@ public class OpeningCharacterController : MonoBehaviour
                 }
                 break;
         }
-    }
+    }*/
 }
