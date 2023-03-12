@@ -7,24 +7,24 @@ using UnityEngine.SceneManagement;
 public class OpeningTextManager : MonoBehaviour
 {
     public string[] texts; //テキストの表示
-    int textNumber; //表示するテキストの番号
+    public static int textNumber; //表示するテキストの番号
     string displayText;
     int textCharNumber; //表示する文字の数
     int displayTextSpeed;
     [SerializeField] int speed = 20; //文字送りスピード
+    [SerializeField] int WaitTime;
     bool Return; //Enterが押されたかどうか判定
     bool textStop;
     bool x = true;
 
     private void Start()
     {
-        
     }
 
     void Update()
     {
         displayTextSpeed++;
-        if (displayTextSpeed % speed *Time.deltaTime == 0)
+        if (displayTextSpeed % speed * Time.deltaTime == 0)
         {
             if (textCharNumber != texts[textNumber].Length) //表示文字数が文字列の長さと異なるとき
             {
