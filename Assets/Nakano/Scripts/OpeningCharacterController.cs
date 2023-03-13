@@ -14,8 +14,6 @@ public class OpeningCharacterController : MonoBehaviour
     [SerializeField] private GameObject APanic; //è≈ÇÈ
     [SerializeField] private GameObject SerifA; //ÉZÉäÉt
 
-
-
     Image fadeAlphaA1, fadeAlphaA2, fadeAlphaA3, fadeAlphaA4, fadeAlphaA5;
     float alphaA1, alphaA2, alphaA3, alphaA4, alphaA5;
 

@@ -14,8 +14,8 @@ public class OpeningTextManager : MonoBehaviour
     [SerializeField] int speed = 20; //文字送りスピード
     [SerializeField] int WaitTime;
     bool Return; //Enterが押されたかどうか判定
-    bool textStop;
-    bool x = true;
+
+    bool isStop;
 
     private void Start()
     {
@@ -23,34 +23,44 @@ public class OpeningTextManager : MonoBehaviour
 
     void Update()
     {
-        displayTextSpeed++;
-        if (displayTextSpeed % speed * Time.deltaTime == 0)
+        isStop = FadeManager.isStop;
+
+        if (!isStop)
         {
-            if (textCharNumber != texts[textNumber].Length) //表示文字数が文字列の長さと異なるとき
+            displayTextSpeed++;
+            if (displayTextSpeed % speed * Time.deltaTime == 0)
             {
-                displayText = displayText + texts[textNumber][textCharNumber]; //n番目のn文字目を表示
-                textCharNumber = textCharNumber + 1; //表示する文字数を一文字ずつ増やす
-            }
-            else
-            {
-                if (textNumber != texts.Length) //最後のテキストでないとき
+                if (textCharNumber != texts[textNumber].Length) //表示文字数が文字列の長さと異なるとき
                 {
-                    if (Return == true) //Enterが押されたら
+                    displayText = displayText + texts[textNumber][textCharNumber]; //n番目のn文字目を表示
+                    textCharNumber = textCharNumber + 1; //表示する文字数を一文字ずつ増やす
+                }
+                else
+                {
+                    if (textNumber != texts.Length) //最後のテキストでないとき
                     {
-                        displayText = ""; //テキストを初期化
-                        textCharNumber = 0; //表示する文字数を初期化
-                        textNumber = textNumber + 1; //表示する文字列を次のものに変更
+                        if (Return == true) //Enterが押されたら
+                        {
+                            displayText = ""; //テキストを初期化
+                            textCharNumber = 0; //表示する文字数を初期化
+                            textNumber = textNumber + 1; //表示する文字列を次のものに変更
+                        }
                     }
                 }
             }
+
+            this.GetComponent<Text>().text = displayText;
+            Return = false;
+
+            if (Input.GetKey(KeyCode.Return))
+            {
+                Return = true;
+            }
+
         }
-
-        this.GetComponent<Text>().text = displayText;
-        Return = false;
-
-        if (Input.GetKey(KeyCode.Return))
+        else
         {
-            Return = true;
+            displayText = "";
         }
 
         /*if (textNumber >= texts.Length)
