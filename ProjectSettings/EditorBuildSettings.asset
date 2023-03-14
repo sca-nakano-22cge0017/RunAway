@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Nakano/Scenes/TitleScene.unity
-    guid: 678e3801834a85244a945f4865aa835a
-  - enabled: 1
-    path: Assets/Nakano/Scenes/SelectScene.unity
-    guid: bc1295ea758bd844abce534f2b62d657
-  - enabled: 1
-    path: Assets/Nakano/Scenes/OpeningScene.unity
-    guid: ae6add270809b044ca76de7d0d50fc3c
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
