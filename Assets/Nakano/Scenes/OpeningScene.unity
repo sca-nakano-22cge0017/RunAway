@@ -446,6 +446,7 @@ MonoBehaviour:
   SerifB: {fileID: 845262332}
   fadeInSpeed: 1.2
   fadeOutSpeed: 1.2
+  moveSpeed: 10
 --- !u!1 &1274425367
 GameObject:
   m_ObjectHideFlags: 0

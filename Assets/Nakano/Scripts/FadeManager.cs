@@ -22,8 +22,7 @@ public class FadeManager : MonoBehaviour
     public static bool isFadein;
 
     //ˆÚ“®
-    [SerializeField] private float upSpeed;
-    [SerializeField] private float downSpeed;
+    [SerializeField] private float moveSpeed;
 
     public static bool isChange = false;
     public static bool isStop = false;
@@ -126,6 +125,13 @@ public class FadeManager : MonoBehaviour
         isStop = true;
         alphaA -= fadeOutSpeed * Time.deltaTime;
         fadeAlphaA.color = new Color(255, 255, 255, alphaA);
+
+        Transform transformA = CharacterA.GetComponent<Transform>();
+        Vector2 pos = transformA.position;
+        pos.y -= moveSpeed * Time.deltaTime;
+        transformA.position = pos;
+
+
         if (alphaA <= 0)
         {
             isFadeout = false;
@@ -139,6 +145,12 @@ public class FadeManager : MonoBehaviour
     {
         alphaA += fadeOutSpeed * Time.deltaTime;
         fadeAlphaA.color = new Color(255, 255, 255, alphaA);
+
+        Transform transformA = CharacterA.GetComponent<Transform>();
+        Vector2 pos = transformA.position;
+        pos.y += moveSpeed * Time.deltaTime;
+        transformA.position = pos;
+
         if (alphaA >= 1)
         {
             isFadein = false;
@@ -152,6 +164,12 @@ public class FadeManager : MonoBehaviour
         isStop = true;
         alphaB -= fadeOutSpeed * Time.deltaTime;
         fadeAlphaB.color = new Color(255, 255, 255, alphaB);
+
+        Transform transformB = CharacterB.GetComponent<Transform>();
+        Vector2 pos = transformB.position;
+        pos.y -= moveSpeed * Time.deltaTime;
+        transformB.position = pos;
+
         if (alphaB <= 0)
         {
             isFadeout = false;
@@ -165,6 +183,12 @@ public class FadeManager : MonoBehaviour
     {
         alphaB += fadeOutSpeed * Time.deltaTime;
         fadeAlphaB.color = new Color(255, 255, 255, alphaB);
+
+        Transform transformB = CharacterB.GetComponent<Transform>();
+        Vector2 pos = transformB.position;
+        pos.y += moveSpeed * Time.deltaTime;
+        transformB.position = pos;
+
         if (alphaB >= 1)
         {
             isFadein = false;
