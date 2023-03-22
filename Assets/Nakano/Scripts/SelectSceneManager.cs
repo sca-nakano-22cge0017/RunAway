@@ -26,7 +26,6 @@ public class SelectSceneManager : MonoBehaviour
 
     int select = 0;
 
-
     void First() //初期状態
     {
         select = 0;
@@ -81,18 +80,6 @@ public class SelectSceneManager : MonoBehaviour
     void selectDecide() //確認Window表示
     {
         ConfirmationWindow.SetActive(true);
-
-        Text confirmation_text = ConfirmationText.GetComponent<Text>();
-        
-        switch(selectCharacter)
-        {
-            case 1:
-                confirmation_text.text = "主人公AでOK?";
-            break;
-            case 2:
-                confirmation_text.text = "主人公BでOK?";
-            break;
-        }
     }
     
     void Start()
@@ -112,7 +99,6 @@ public class SelectSceneManager : MonoBehaviour
             select += 1;
         }
 
-
         switch(select)
         {
             case 0:
@@ -131,6 +117,17 @@ public class SelectSceneManager : MonoBehaviour
                 {
                     selectDecide();
                 }
+                break;
+        }
+
+        Text confirmation_text = ConfirmationText.GetComponent<Text>();
+        switch (selectCharacter)
+        {
+            case 1:
+                confirmation_text.text = "メンちゃん でOK?";
+                break;
+            case 2:
+                confirmation_text.text = "ローラ でOK?";
                 break;
         }
     }

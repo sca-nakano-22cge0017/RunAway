@@ -13,6 +13,14 @@ public class FadeManager : MonoBehaviour
     [SerializeField] private GameObject SerifA;
     [SerializeField] private GameObject SerifB;
 
+    //テキストボックス
+    [SerializeField] private GameObject TextBoxA;
+    [SerializeField] private GameObject TextBoxB;
+
+    //名前
+    [SerializeField] private GameObject NameTextA;
+    [SerializeField] private GameObject NameTextB;
+
     //フェードイン・フェードアウト
     [SerializeField] private float fadeInSpeed;
     [SerializeField] private float fadeOutSpeed;
@@ -33,6 +41,8 @@ public class FadeManager : MonoBehaviour
     {
         CharacterA.SetActive(true);
         SerifA.SetActive(true);
+        TextBoxA.SetActive(true);
+        NameTextA.SetActive(true);
 
         fadeAlphaA = CharacterA.GetComponent<Image>();
         alphaA = fadeAlphaA.color.a;
@@ -43,6 +53,8 @@ public class FadeManager : MonoBehaviour
     {
         CharacterB.SetActive(true);
         SerifB.SetActive(true);
+        TextBoxB.SetActive(true);
+        NameTextB.SetActive(true);
 
         fadeAlphaB = CharacterB.GetComponent<Image>();
         alphaB = fadeAlphaB.color.a;
@@ -55,6 +67,10 @@ public class FadeManager : MonoBehaviour
         CharacterB.SetActive(false);
         SerifA.SetActive(false);
         SerifB.SetActive(false);
+        TextBoxA.SetActive(false);
+        TextBoxB.SetActive(false);
+        NameTextA.SetActive(false);
+        NameTextB.SetActive(false);
 
         switch (selectCharacter)
         {
