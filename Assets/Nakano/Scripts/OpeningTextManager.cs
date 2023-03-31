@@ -63,12 +63,12 @@ public class OpeningTextManager : MonoBehaviour
             displayText = "";
         }
 
-        /*if (textNumber >= texts.Length)
+        if (textNumber >= texts.Length)
         {
             if (Input.GetKey(KeyCode.Return))
             {
-                SceneManager.LoadScene("");
+                SceneManager.LoadScene("ExplanationScene");
             }
-        }*/
+        }
     }
 }
