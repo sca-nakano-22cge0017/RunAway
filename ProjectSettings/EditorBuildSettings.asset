@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Nakano/Scenes/ExplanationScene.unity
     guid: 7d98a532e39cd714e82d1119d9108e99
+  - enabled: 1
+    path: Assets/Sasaki/Scenes/ClearScene.unity
+    guid: 53c81c1a11f9b5a4db6d85a34810fda0
   m_configObjects: {}
