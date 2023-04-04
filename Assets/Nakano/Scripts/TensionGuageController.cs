@@ -25,5 +25,9 @@ public class TensionGuageController : MonoBehaviour
         {
             playerTension += Speed / 100.0f;
         }
+        if(playerTension <= 0)
+        {
+            playerTension = 0;
+        }
     }
 }
