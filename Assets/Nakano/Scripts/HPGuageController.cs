@@ -57,7 +57,7 @@ public class HPGuageController : MonoBehaviour
             GreenSlider.value = valueTo;
             if (RedSlider.value >= valueTo)
             {
-                RedSlider.value -= minusSpeed;
+                RedSlider.value -= minusSpeed * Time.deltaTime;
             }
             if(RedSlider.value <= valueTo)
             {

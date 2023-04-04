@@ -670,7 +670,7 @@ MonoBehaviour:
   FlameA: {fileID: 7781347505168184454}
   FlameB: {fileID: 7781347505762791214}
   HPtext: {fileID: 7781347506251403462}
-  minusSpeed: 0.5
+  minusSpeed: 100
 --- !u!1 &7781347505762791214
 GameObject:
   m_ObjectHideFlags: 0
