@@ -9,6 +9,7 @@ public class FanMove : MonoBehaviour
 
     void Start()
     {
+
     }
 
     void Update()
@@ -18,6 +19,15 @@ public class FanMove : MonoBehaviour
         if(transform.position.x <= -10)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if(collision.gameObject.name == "Attack")
+        {
+            gameObject.SetActive(false);
         }
     }
 }

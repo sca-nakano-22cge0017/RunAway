@@ -24,7 +24,7 @@ public class FanSpawnManager : MonoBehaviour
         {
             distance = Random.Range(distanceMin, distanceMax);
             number = Random.Range(0, fanPrefab.Length);
-            Instantiate(fanPrefab[number], new Vector3(distance, 0, 0), transform.rotation);
+            Instantiate(fanPrefab[number], new Vector3(distance, -2f, 0), transform.rotation);
             time = timeInterval;
         }
     }

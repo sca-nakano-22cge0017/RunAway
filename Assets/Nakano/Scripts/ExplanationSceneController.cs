@@ -34,7 +34,7 @@ public class ExplanationSceneController : MonoBehaviour
                 ItemsExplanationText.SetActive(true);
             break;
             case 2:
-                SceneManager.LoadScene("MainGameScene");
+                SceneManager.LoadScene("MainGame");
             break;
         }
     }
