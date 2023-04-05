@@ -47,6 +47,7 @@ public class HPGuageController : MonoBehaviour
             break;
         }
         var valueTo = (playerHP - 100);
+        
         if (Input.GetKeyDown(KeyCode.Return)) //ファンが当たったら　のif文に変更
         {
             isInput = true;
@@ -70,5 +71,11 @@ public class HPGuageController : MonoBehaviour
         {
             player_HP = 0;
         }
+    }
+
+    public void HpGuage()
+    {
+        isInput = true;
+        player_HP -= 100;
     }
 }
