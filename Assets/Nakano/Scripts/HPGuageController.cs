@@ -65,5 +65,10 @@ public class HPGuageController : MonoBehaviour
                 playerHP -= 100;
             }
         }
+
+        if(player_HP <= 0)
+        {
+            player_HP = 0;
+        }
     }
 }
