@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Fun
+  - PublicPhone
+  - Car
   layers:
   - Default
   - TransparentFX

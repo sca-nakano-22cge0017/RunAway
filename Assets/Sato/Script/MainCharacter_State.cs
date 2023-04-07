@@ -39,11 +39,22 @@ public class MainCharacter_State : MonoBehaviour
     [SerializeField]
     GameObject[] publicPhone;
 
+    [SerializeField]
+    GameObject clearText;
+
+    [SerializeField]
+    GameObject Car;
+
+    [SerializeField]
+    GameObject fanManager;
+
     bool justOnce = true;
     Vector2 vec2;
     Vector3 scale, scaleRe,jump;
 
     int coinCount = 0;
+    bool isHit, isCarMove, isRide;
+    Vector3 carScale, carScaleRe;
 
     void Start() 
     {
@@ -57,6 +68,18 @@ public class MainCharacter_State : MonoBehaviour
         scale = new Vector3(1,1,1);
         scaleRe = new Vector3(-1, 1, 1);
         jump = new Vector3(0,2f,0);
+
+        coinCount = 0;
+
+        clearText.SetActive(false);
+        Car.SetActive(false);
+        isHit = false;
+        isCarMove = false;
+        isRide = false;
+
+        carScale = new Vector3(2,2,1);
+        carScaleRe = new Vector3(-2,2,1);
+        Car.transform.localScale = carScale;
     }
 
     void Update()
@@ -77,16 +100,18 @@ public class MainCharacter_State : MonoBehaviour
             StartCoroutine(StartPosReturn());
         }
 
+        if (!isHit)
+        {
         if(Input.GetKey(KeyCode.A))
         {
-            Debug.Log("通った");
+            //Debug.Log("通った");
             rectTransform.anchoredPosition += vec2;
             mainChara.transform.localScale = scaleRe;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("通った");
+            //Debug.Log("通った");
             rectTransform.anchoredPosition -= vec2;
             mainChara.transform.localScale = scale;
         }
@@ -96,6 +121,55 @@ public class MainCharacter_State : MonoBehaviour
             boxCollider[0].enabled = true;
             boxCollider[1].enabled = true;
             rigidbody.AddForce(Vector2.up * 500f);
+        }
+        }
+        else
+        {
+            Destroy(fanManager);
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                isCarMove = true;
+            }
+        }
+
+        Transform carPos = Car.transform;
+        Vector3 pos = carPos.position;
+
+        if (isCarMove)
+        {
+            Car.SetActive(true); //車を表示
+            clearText.SetActive(false); //『「Z」を押す』を非表示に
+
+            if (!isRide)
+            {
+                if (pos.x >= 0)
+                {
+                    pos.x -= 10 * Time.deltaTime;
+                    carPos.position = pos;
+                }
+                else
+                {
+                    mainChara.SetActive(false);
+                    isRide = true;
+                }
+            }
+        }
+
+        if (isRide) //主人公が車に乗ったら
+        {
+            Car.transform.localScale = carScaleRe; //画像反転
+
+            if (pos.x <= 1500)
+            {
+                pos.x += 10 * Time.deltaTime;
+                carPos.position = pos;
+            }
+            else
+            {
+                fade.FadeIn(1f);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("ClearScene");
+            }
         }
     }
     
@@ -133,12 +207,18 @@ public class MainCharacter_State : MonoBehaviour
 
             if (coinCount == 10)
             {
-                fade.FadeIn(1f);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("ClearScene");
+                //fade.FadeIn(1f);
+                //UnityEngine.SceneManagement.SceneManager.LoadScene("ClearScene");
                 for (int i = 0; i < publicPhone.Length; i++)
                 {
                     publicPhone[i].SetActive(true);
                 }
+            }
+
+            if (collision.CompareTag("PublicPhone"))
+            {
+                isHit = true;
+                clearText.SetActive(true);
             }
         }   
     }
