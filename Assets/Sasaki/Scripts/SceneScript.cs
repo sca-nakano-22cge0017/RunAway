@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneScript : MonoBehaviour
 {
-    [SerializeField]
     private float time;
     // Update is called once per frame
     void Update()
