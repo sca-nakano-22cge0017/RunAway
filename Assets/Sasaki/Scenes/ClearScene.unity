@@ -454,6 +454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u30A2\u30A4\u30C9\u30EBB"
       objectReference: {fileID: 0}
+    - target: {fileID: 2587339690625990897, guid: ef7342e8b2fd8c44c8ac635cec388f85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2587339690625990899, guid: ef7342e8b2fd8c44c8ac635cec388f85, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -496,6 +500,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2587339690625990899, guid: ef7342e8b2fd8c44c8ac635cec388f85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587339692110873822, guid: ef7342e8b2fd8c44c8ac635cec388f85, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
