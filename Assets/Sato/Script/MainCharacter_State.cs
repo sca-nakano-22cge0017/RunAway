@@ -53,7 +53,7 @@ public class MainCharacter_State : MonoBehaviour
     Vector3 scale, scaleRe,jump;
 
     int coinCount = 0;
-    bool isHit, isCarMove, isRide;
+    bool isHit, isCarMove, isRide, isClear;
     Vector3 carScale, carScaleRe;
 
     void Start() 
@@ -76,6 +76,7 @@ public class MainCharacter_State : MonoBehaviour
         isHit = false;
         isCarMove = false;
         isRide = false;
+        isClear = false;
 
         carScale = new Vector3(2,2,1);
         carScaleRe = new Vector3(-2,2,1);
@@ -150,7 +151,8 @@ public class MainCharacter_State : MonoBehaviour
                 }
                 else
                 {
-                    mainChara.SetActive(false);
+                    Image main = mainChara.GetComponent<Image>();
+                    main.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                     isRide = true;
                 }
             }
@@ -160,7 +162,7 @@ public class MainCharacter_State : MonoBehaviour
         {
             Car.transform.localScale = carScaleRe; //画像反転
 
-            if (pos.x <= 1500)
+            if (pos.x <= 15)
             {
                 pos.x += 10 * Time.deltaTime;
                 carPos.position = pos;
@@ -196,16 +198,24 @@ public class MainCharacter_State : MonoBehaviour
     {
         if(collision.CompareTag("Fun"))
         {
-            hPGuageController.HpGuage();
+            if(!isClear)
+            {
+                hPGuageController.HpGuage();
+            }
         }
         else
         {
             collision.gameObject.SetActive(false);
             coinCount++;
 
+            if(coinCount >= 10)
+            {
+                coinCount = 10;
+            }
+
             coinCount_Text.text = StringComponent.AddString("あと", (10 - coinCount).ToString(), "枚");
 
-            if (coinCount == 10)
+            if (coinCount == 1) //デバッグ用に１
             {
                 //fade.FadeIn(1f);
                 //UnityEngine.SceneManagement.SceneManager.LoadScene("ClearScene");
@@ -213,12 +223,17 @@ public class MainCharacter_State : MonoBehaviour
                 {
                     publicPhone[i].SetActive(true);
                 }
+                isClear = true;
             }
 
             if (collision.CompareTag("PublicPhone"))
             {
                 isHit = true;
                 clearText.SetActive(true);
+                for (int i = 0; i < publicPhone.Length; i++)
+                {
+                    publicPhone[i].SetActive(true);
+                }
             }
         }   
     }

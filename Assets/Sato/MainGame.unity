@@ -2739,6 +2739,9 @@ MonoBehaviour:
   clearText: {fileID: 1783287366}
   Car: {fileID: 626465818}
   fanManager: {fileID: 2131569123}
+  m_Sprite:
+  - {fileID: 21300000, guid: d7d223699b591c848acaf035e626d95c, type: 3}
+  - {fileID: 21300000, guid: 7e61f00915fb3664db8b00b6eb6584ed, type: 3}
 --- !u!50 &917213500
 Rigidbody2D:
   serializedVersion: 4
