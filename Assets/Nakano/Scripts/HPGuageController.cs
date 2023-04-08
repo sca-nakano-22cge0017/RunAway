@@ -48,11 +48,11 @@ public class HPGuageController : MonoBehaviour
         }
         var valueTo = (playerHP - 100);
         
-        if (Input.GetKeyDown(KeyCode.Return)) //ファンが当たったら　のif文に変更
+        /*if (Input.GetKeyDown(KeyCode.Return)) //ファンが当たったら　のif文に変更
         {
             isInput = true;
             player_HP -= 100;
-        }
+        }*/
         if(isInput)
         {
             GreenSlider.value = valueTo;
