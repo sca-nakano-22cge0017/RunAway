@@ -56,6 +56,8 @@ public class MainCharacter_State : MonoBehaviour
     bool isHit, isCarMove, isRide, isClear;
     Vector3 carScale, carScaleRe;
 
+    Animator anim = null;
+
     void Start() 
     {
         //UpdateManager.Instance.Bind(this, FrameControl.ON);
@@ -81,6 +83,8 @@ public class MainCharacter_State : MonoBehaviour
         carScale = new Vector3(2,2,1);
         carScaleRe = new Vector3(-2,2,1);
         Car.transform.localScale = carScale;
+
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -108,21 +112,32 @@ public class MainCharacter_State : MonoBehaviour
             //Debug.Log("’Ê‚Á‚½");
             rectTransform.anchoredPosition += vec2;
             mainChara.transform.localScale = scaleRe;
+            anim.SetBool("sidewalk", true);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             //Debug.Log("’Ê‚Á‚½");
             rectTransform.anchoredPosition -= vec2;
             mainChara.transform.localScale = scale;
+            anim.SetBool("sidewalk", true);
         }
+        else { anim.SetBool("sidewalk", false);}
+
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            anim.SetBool("Skill", true);
+        }
+        else { anim.SetBool("Skeill", false);}
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             boxCollider[0].enabled = true;
             boxCollider[1].enabled = true;
             rigidbody.AddForce(Vector2.up * 500f);
+            anim.SetBool("Jamp", true);
         }
+            else { anim.SetBool("Jamp", false);}
         }
         else
         {
