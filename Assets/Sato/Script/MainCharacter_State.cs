@@ -215,7 +215,7 @@ public class MainCharacter_State : MonoBehaviour
 
             coinCount_Text.text = StringComponent.AddString("あと", (10 - coinCount).ToString(), "枚");
 
-            if (coinCount == 1) //デバッグ用に１
+            if (coinCount == 10) //デバッグ用に１
             {
                 //fade.FadeIn(1f);
                 //UnityEngine.SceneManagement.SceneManager.LoadScene("ClearScene");
