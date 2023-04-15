@@ -23,16 +23,15 @@ public class HPGuageController : MonoBehaviour
         selectCharacter = SelectSceneManager.selectCharacter;
         FlameA.SetActive(true);
         FlameB.SetActive(false);
+        if (selectCharacter == null)
+        {
+            selectCharacter = 1;
+        }
     }
 
     
     void Update()
     {
-        if(selectCharacter == null)
-        {
-            selectCharacter = 1;
-        }
-
         HPtext.text = "" + player_HP;
 
         switch(selectCharacter)
