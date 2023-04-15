@@ -171,8 +171,6 @@ public class MainCharacter_State : MonoBehaviour
                 }
                 else
                 {
-                    //Image main = mainChara.GetComponent<Image>();
-                    //main.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                     SpriteRenderer main = mainChara.GetComponent<SpriteRenderer>();
                     main.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                     isRide = true;

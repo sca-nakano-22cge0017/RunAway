@@ -343,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &179552466
 Transform:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ Animator:
   m_GameObject: {fileID: 179552465}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20f442ccd10407f49959ee83dd2760b1, type: 2}
+  m_Controller: {fileID: 9100000, guid: dd97d1cb77bff67429f67c109e4607fe, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -390,7 +390,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1355792, y: 0.014032185}
+  m_Offset: {x: -0.1355792, y: -0.042837083}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -401,7 +401,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9143445, y: 2.9453516}
+  m_Size: {x: 0.9143445, y: 3.0590901}
   m_EdgeRadius: 0
 --- !u!50 &179552469
 Rigidbody2D:
@@ -456,7 +456,7 @@ MonoBehaviour:
   clearText: {fileID: 1783287366}
   Car: {fileID: 626465818}
   fanManager: {fileID: 2131569123}
-  jumpForce: 350
+  jumpForce: 500
 --- !u!212 &179552471
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -497,7 +497,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a99f190cf2b1d6341bfe415f577bbd97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e61f00915fb3664db8b00b6eb6584ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2539,8 +2539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d8ab982b9e9b54094d0748001202b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCharaA: {fileID: 0}
-  mainCharaB: {fileID: 0}
+  mainCharaA: {fileID: 1829104590}
+  mainCharaB: {fileID: 179552465}
 --- !u!4 &827635109
 Transform:
   m_ObjectHideFlags: 0
@@ -5016,7 +5016,7 @@ MonoBehaviour:
   clearText: {fileID: 1783287366}
   Car: {fileID: 626465818}
   fanManager: {fileID: 2131569123}
-  jumpForce: 350
+  jumpForce: 500
 --- !u!212 &1829104596
 SpriteRenderer:
   m_ObjectHideFlags: 0
