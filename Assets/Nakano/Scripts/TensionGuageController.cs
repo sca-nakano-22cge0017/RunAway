@@ -9,18 +9,18 @@ public class TensionGuageController : MonoBehaviour
     private float playerTension = 100;
     [SerializeField] private float Speed;
 
-    [SerializeField]
-    GameObject character;
+    //[SerializeField]
+    //GameObject character;
 
-    [SerializeField]
-    Image chara_AttackImage;
+    //[SerializeField]
+    //Image chara_AttackImage;
 
     [SerializeField]
     BoxCollider2D boxCollider2d;
     void Start()
     {
         boxCollider2d.enabled = false;
-        chara_AttackImage.enabled = false;
+        //chara_AttackImage.enabled = false;
     }
 
     void Update()
@@ -44,14 +44,14 @@ public class TensionGuageController : MonoBehaviour
 
     IEnumerator Attack()
     {
-        character.SetActive(false);
-        chara_AttackImage.enabled = true;
+        //character.SetActive(false);
+        //chara_AttackImage.enabled = true;
         boxCollider2d.enabled = true;
         
         yield return new WaitForSeconds(0.3f);
 
         boxCollider2d.enabled = false;
-        chara_AttackImage.enabled = false;
-        character.SetActive(true);
+        //chara_AttackImage.enabled = false;
+        //character.SetActive(true);
     }
 }

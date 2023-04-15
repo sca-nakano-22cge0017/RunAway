@@ -57,18 +57,21 @@ public class MainCharacter_State : MonoBehaviour
     Vector3 carScale, carScaleRe;
 
     Animator anim = null;
+    bool isDamage;
+    Rigidbody2D rbody2D;
+    [SerializeField] private float jumpForce;
 
     void Start() 
     {
-        //UpdateManager.Instance.Bind(this, FrameControl.ON);
+        //UpdateManager.Instance.Bind(this, FrameControl.ON)
 
         for (int i = 0; i < publicPhone.Length; i++)
         {
             publicPhone[i].SetActive(false);
         }
         vec2 = new Vector2(speed,0);
-        scale = new Vector3(1,1,1);
-        scaleRe = new Vector3(-1, 1, 1);
+        scale = new Vector3(100,100,100);
+        scaleRe = new Vector3(-100, 100, 100);
         jump = new Vector3(0,2f,0);
 
         coinCount = 0;
@@ -85,12 +88,13 @@ public class MainCharacter_State : MonoBehaviour
         Car.transform.localScale = carScale;
 
         anim = GetComponent<Animator>();
+        rbody2D = GetComponent<Rigidbody2D>();
+        isDamage = false;
     }
 
     void Update()
     {
         if (!this.gameObject.activeInHierarchy) return;
-
 
         if(rectTransform.anchoredPosition.x > 0f)
         {
@@ -112,7 +116,7 @@ public class MainCharacter_State : MonoBehaviour
             //Debug.Log("’Ê‚Á‚½");
             rectTransform.anchoredPosition += vec2;
             mainChara.transform.localScale = scaleRe;
-            anim.SetBool("sidewalk", true);
+            anim.SetBool("run", true);
         }
 
         else if (Input.GetKey(KeyCode.D))
@@ -120,24 +124,25 @@ public class MainCharacter_State : MonoBehaviour
             //Debug.Log("’Ê‚Á‚½");
             rectTransform.anchoredPosition -= vec2;
             mainChara.transform.localScale = scale;
-            anim.SetBool("sidewalk", true);
+            anim.SetBool("run", true);
         }
-        else { anim.SetBool("sidewalk", false);}
+        else { anim.SetBool("run", false);}
 
         if(Input.GetKeyDown(KeyCode.P))
         {
-            anim.SetBool("Skill", true);
+            anim.SetBool("skill", true);
         }
-        else { anim.SetBool("Skeill", false);}
+        else { anim.SetBool("skill", false);}
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             boxCollider[0].enabled = true;
             boxCollider[1].enabled = true;
-            rigidbody.AddForce(Vector2.up * 500f);
-            anim.SetBool("Jamp", true);
+            //rigidbody.AddForce(Vector2.up * 500f);
+            anim.SetBool("jump", true);
+            rbody2D.AddForce(transform.up * jumpForce);
         }
-            else { anim.SetBool("Jamp", false);}
+            else { anim.SetBool("jump", false);}
         }
         else
         {
@@ -166,7 +171,9 @@ public class MainCharacter_State : MonoBehaviour
                 }
                 else
                 {
-                    Image main = mainChara.GetComponent<Image>();
+                    //Image main = mainChara.GetComponent<Image>();
+                    //main.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                    SpriteRenderer main = mainChara.GetComponent<SpriteRenderer>();
                     main.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                     isRide = true;
                 }
@@ -216,6 +223,12 @@ public class MainCharacter_State : MonoBehaviour
             if(!isClear)
             {
                 hPGuageController.HpGuage();
+                isDamage = true;
+                if (isDamage)
+                {
+                    anim.SetTrigger("damage");
+                    isDamage = false;
+                }
             }
         }
         else
@@ -244,6 +257,7 @@ public class MainCharacter_State : MonoBehaviour
             if (collision.CompareTag("PublicPhone"))
             {
                 isHit = true;
+                anim.SetBool("run", false);
                 clearText.SetActive(true);
                 for (int i = 0; i < publicPhone.Length; i++)
                 {
