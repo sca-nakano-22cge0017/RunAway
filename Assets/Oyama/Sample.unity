@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 1284425558}
   - component: {fileID: 1284425557}
   m_Layer: 0
-  m_Name: f225e01bee165da92cc05412bb3e888b
+  m_Name: Gameover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -789,7 +789,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 4c615c02044e6554792bfc507a1a4479, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -809,8 +809,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284425556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -2.61, z: 0}
-  m_LocalScale: {x: 2.7934, y: 3.0698, z: 1}
+  m_LocalPosition: {x: -0.15, y: 3.74, z: 0}
+  m_LocalScale: {x: 2.9045775, y: 3.0698, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
