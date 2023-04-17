@@ -10,6 +10,8 @@ public class HPGuageController : MonoBehaviour
     [SerializeField] private GameObject FlameA;
     [SerializeField] private GameObject FlameB;
     [SerializeField] private Text HPtext;
+    [SerializeField] MainCharacter_State mainCharacter_StateA;
+    [SerializeField] MainCharacter_State mainCharacter_StateB;
     int playerHP = 1000;
     int player_HP = 1000;
     bool isInput;
@@ -69,6 +71,8 @@ public class HPGuageController : MonoBehaviour
         if(player_HP <= 0)
         {
             player_HP = 0;
+            mainCharacter_StateA.HpDecide();
+            mainCharacter_StateB.HpDecide();
         }
     }
 

@@ -5761,6 +5761,14 @@ PrefabInstance:
       propertyPath: chara_AttackImage
       value: 
       objectReference: {fileID: 1708184467}
+    - target: {fileID: 7781347505474944608, guid: ccabea571ebef174395286dbe9431a4f, type: 3}
+      propertyPath: mainsCharacter_stateA
+      value: 
+      objectReference: {fileID: 1829104595}
+    - target: {fileID: 7781347505474944608, guid: ccabea571ebef174395286dbe9431a4f, type: 3}
+      propertyPath: mainsCharacter_stateB
+      value: 
+      objectReference: {fileID: 179552470}
     - target: {fileID: 7781347505670131489, guid: ccabea571ebef174395286dbe9431a4f, type: 3}
       propertyPath: m_Name
       value: Guage
@@ -5813,6 +5821,10 @@ PrefabInstance:
       propertyPath: minusSpeed
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 7781347505716480529, guid: ccabea571ebef174395286dbe9431a4f, type: 3}
+      propertyPath: mainCharacter_State
+      value: 
+      objectReference: {fileID: 1829104595}
     - target: {fileID: 7781347505766360123, guid: ccabea571ebef174395286dbe9431a4f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

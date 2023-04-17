@@ -57,7 +57,7 @@ public class MainCharacter_State : MonoBehaviour
     Vector3 carScale, carScaleRe;
 
     Animator anim = null;
-    bool isDamage;
+    bool isDamage, isDown, isSkill;
     Rigidbody2D rbody2D;
     [SerializeField] private float jumpForce;
 
@@ -90,6 +90,10 @@ public class MainCharacter_State : MonoBehaviour
         anim = GetComponent<Animator>();
         rbody2D = GetComponent<Rigidbody2D>();
         isDamage = false;
+        isDown = false;
+        isSkill = true;
+
+        anim.SetBool("down",false);
     }
 
     void Update()
@@ -111,38 +115,47 @@ public class MainCharacter_State : MonoBehaviour
 
         if (!isHit)
         {
-        if(Input.GetKey(KeyCode.A))
-        {
-            //Debug.Log("通った");
-            rectTransform.anchoredPosition += vec2;
-            mainChara.transform.localScale = scaleRe;
-            anim.SetBool("run", true);
-        }
+            //スキル演出時やダメージ演出時に動かないようにする
+            {
+                if (Input.GetKey(KeyCode.A))
+                {
+                    //Debug.Log("通った");
+                    rectTransform.anchoredPosition += vec2;
+                    mainChara.transform.localScale = scaleRe;
+                    anim.SetBool("run", true);
+                }
 
-        else if (Input.GetKey(KeyCode.D))
-        {
-            //Debug.Log("通った");
-            rectTransform.anchoredPosition -= vec2;
-            mainChara.transform.localScale = scale;
-            anim.SetBool("run", true);
-        }
-        else { anim.SetBool("run", false);}
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    //Debug.Log("通った");
+                    rectTransform.anchoredPosition -= vec2;
+                    mainChara.transform.localScale = scale;
+                    anim.SetBool("run", true);
+                }
+                else { anim.SetBool("run", false); }
+            }
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            anim.SetBool("skill", true);
-        }
-        else { anim.SetBool("skill", false);}
+        if(isSkill)
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    Debug.Log("スキル使用");
+                    anim.SetBool("run", false);
+                    anim.SetBool("skill", true);
+                }
+                else { anim.SetBool("skill", false); }
+            }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             boxCollider[0].enabled = true;
             boxCollider[1].enabled = true;
             //rigidbody.AddForce(Vector2.up * 500f);
+            anim.SetBool("run", false);
             anim.SetBool("jump", true);
             rbody2D.AddForce(transform.up * jumpForce);
         }
-            else { anim.SetBool("jump", false);}
+        else { anim.SetBool("jump", false);}
         }
         else
         {
@@ -152,6 +165,12 @@ public class MainCharacter_State : MonoBehaviour
             {
                 isCarMove = true;
             }
+        }
+
+        if(isDown)
+        {
+            anim.SetBool("down", true);
+            //ゲームオーバーシーンへ遷移
         }
 
         Transform carPos = Car.transform;
@@ -227,6 +246,7 @@ public class MainCharacter_State : MonoBehaviour
                     anim.SetTrigger("damage");
                     isDamage = false;
                 }
+                
             }
         }
         else
@@ -263,6 +283,21 @@ public class MainCharacter_State : MonoBehaviour
                 }
             }
         }   
+    }
+
+    public void HpDecide()
+    {
+        isDown = true;
+    }
+
+    public void skillOk()
+    {
+        isSkill = true;
+    }
+
+    public void skillNg()
+    {
+        isSkill = false;
     }
 }
     

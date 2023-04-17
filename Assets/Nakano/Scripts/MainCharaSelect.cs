@@ -16,7 +16,7 @@ public class MainCharaSelect : MonoBehaviour
     {
         //if(selectCharacter == null)
         {
-            selectCharacter = 2;
+            selectCharacter = 1;
         }
 
         switch(selectCharacter)
