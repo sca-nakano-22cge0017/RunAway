@@ -5825,6 +5825,14 @@ PrefabInstance:
       propertyPath: mainCharacter_State
       value: 
       objectReference: {fileID: 1829104595}
+    - target: {fileID: 7781347505716480529, guid: ccabea571ebef174395286dbe9431a4f, type: 3}
+      propertyPath: mainCharacter_StateA
+      value: 
+      objectReference: {fileID: 1829104595}
+    - target: {fileID: 7781347505716480529, guid: ccabea571ebef174395286dbe9431a4f, type: 3}
+      propertyPath: mainCharacter_StateB
+      value: 
+      objectReference: {fileID: 179552470}
     - target: {fileID: 7781347505766360123, guid: ccabea571ebef174395286dbe9431a4f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
