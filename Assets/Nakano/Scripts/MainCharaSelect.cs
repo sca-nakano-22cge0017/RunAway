@@ -16,7 +16,7 @@ public class MainCharaSelect : MonoBehaviour
     {
         //デバッグ用
         {
-            selectCharacter = 2;
+            //selectCharacter = 1;
         }
 
         switch(selectCharacter)

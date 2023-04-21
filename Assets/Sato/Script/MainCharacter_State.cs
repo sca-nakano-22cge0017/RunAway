@@ -53,11 +53,11 @@ public class MainCharacter_State : MonoBehaviour
     Vector3 scale, scaleRe,jump;
 
     int coinCount = 0;
-    bool isHit, isCarMove, isRide, isClear;
+    bool isMove, isHit, isCarMove, isRide, isClear;
     Vector3 carScale, carScaleRe;
 
     Animator anim = null;
-    bool isDamage, isDown, isSkill;
+    bool isDamage, isDown, isSkill, isCap;
     Rigidbody2D rbody2D;
     [SerializeField] private float jumpForce;
 
@@ -78,10 +78,12 @@ public class MainCharacter_State : MonoBehaviour
 
         clearText.SetActive(false);
         Car.SetActive(false);
+        isMove = false;
         isHit = false;
         isCarMove = false;
         isRide = false;
         isClear = false;
+        isCap = false;
 
         carScale = new Vector3(2,2,1);
         carScaleRe = new Vector3(-2,2,1);
@@ -115,25 +117,41 @@ public class MainCharacter_State : MonoBehaviour
 
         if (!isHit)
         {
-            //スキル演出時やダメージ演出時に動かないようにする
+            //スキル発動時などに動かないようにする
             {
                 if (Input.GetKey(KeyCode.A))
                 {
-                    //Debug.Log("通った");
+                    isMove = true;
                     rectTransform.anchoredPosition += vec2;
                     mainChara.transform.localScale = scaleRe;
-                    anim.SetBool("run", true);
                 }
 
                 else if (Input.GetKey(KeyCode.D))
                 {
-                    //Debug.Log("通った");
+                    isMove = true;
                     rectTransform.anchoredPosition -= vec2;
                     mainChara.transform.localScale = scale;
+                }
+                else
+                {
+                    isMove = false;
+                }
+            }
+
+        if(isMove)
+            {
+                if(!isCap)
+                {
+                    anim.SetBool("runCap", false);
                     anim.SetBool("run", true);
                 }
-                else { anim.SetBool("run", false); }
+                else
+                {
+                    anim.SetBool("run", false);
+                    anim.SetBool("runCap", true);
+                }
             }
+        else { anim.SetBool("run", false); anim.SetBool("runCap",false); }
 
         if(isSkill)
             {
@@ -146,13 +164,40 @@ public class MainCharacter_State : MonoBehaviour
                 else { anim.SetBool("skill", false); }
             }
 
+        if(isCap)
+            {
+                anim.SetBool("cap",true);
+                SpriteRenderer main = mainChara.GetComponent<SpriteRenderer>();
+                main.color = new Color(1.0f, 1.0f, 1.0f, 0.7f);
+                StartCoroutine(CapTime());
+            }
+        else
+        {
+            SpriteRenderer main = mainChara.GetComponent<SpriteRenderer>();
+            main.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            anim.SetBool("cap",false);
+        }
+
+        if(Input.GetKeyDown(KeyCode.T)) //debug
+            {
+                isCap = true;
+            }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             boxCollider[0].enabled = true;
             boxCollider[1].enabled = true;
             //rigidbody.AddForce(Vector2.up * 500f);
-            anim.SetBool("run", false);
-            anim.SetBool("jump", true);
+            if(!isCap)
+                {
+                    anim.SetBool("run", false);
+                    anim.SetBool("jump", true);
+                }
+                else
+                {
+                    anim.SetBool("runCap", false);
+                    anim.SetBool("jumpCap", true);
+                }
             rbody2D.AddForce(transform.up * jumpForce);
         }
         else { anim.SetBool("jump", false);}
@@ -224,6 +269,13 @@ public class MainCharacter_State : MonoBehaviour
 
         fade.FadeOut(1f);
     }
+
+    IEnumerator CapTime()
+    {
+        yield return new WaitForSeconds(3);
+        isCap = false;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.name == "Ground")
@@ -237,7 +289,7 @@ public class MainCharacter_State : MonoBehaviour
     {
         if(collision.CompareTag("Fun"))
         {
-            if(!isClear)
+            if(!isClear && !isCap)
             {
                 hPGuageController.HpGuage();
                 isDamage = true;
@@ -261,16 +313,19 @@ public class MainCharacter_State : MonoBehaviour
 
             coinCount_Text.text = StringComponent.AddString("あと", (10 - coinCount).ToString(), "枚");
 
-            if (coinCount == 10) //デバッグ用に１
+            if (coinCount == 10)
             {
-                //fade.FadeIn(1f);
-                //UnityEngine.SceneManagement.SceneManager.LoadScene("ClearScene");
                 for (int i = 0; i < publicPhone.Length; i++)
                 {
                     publicPhone[i].SetActive(true);
                 }
                 isClear = true;
             }
+
+            /*if(collision.CompareTag("Cap"))
+            {
+                isCap = true;
+            }*/
 
             if (collision.CompareTag("PublicPhone"))
             {
