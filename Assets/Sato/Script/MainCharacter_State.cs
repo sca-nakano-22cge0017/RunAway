@@ -58,6 +58,7 @@ public class MainCharacter_State : MonoBehaviour
 
     Animator anim = null;
     bool isDamage, isDown, isSkill, isCap;
+    bool skillAnim, damageAnim, downAnim;
     Rigidbody2D rbody2D;
     [SerializeField] private float jumpForce;
 
@@ -84,6 +85,9 @@ public class MainCharacter_State : MonoBehaviour
         isRide = false;
         isClear = false;
         isCap = false;
+        skillAnim = false;
+        damageAnim = false;
+        downAnim = false;
 
         carScale = new Vector3(2,2,1);
         carScaleRe = new Vector3(-2,2,1);
@@ -115,27 +119,28 @@ public class MainCharacter_State : MonoBehaviour
             StartCoroutine(StartPosReturn());
         }
 
+        if(anim.GetBool("skill") == true) { skillAnim = true;} else skillAnim = false;
+        if(anim.GetBool("damage") == true) { damageAnim = true;} else damageAnim = false;
+        if(anim.GetBool("down") == true) { downAnim = true; } else downAnim = false;
+
         if (!isHit)
         {
-            //スキル発動時などに動かないようにする
+            if (Input.GetKey(KeyCode.A) && !skillAnim && !damageAnim && !downAnim)
             {
-                if (Input.GetKey(KeyCode.A))
-                {
-                    isMove = true;
-                    rectTransform.anchoredPosition += vec2;
-                    mainChara.transform.localScale = scaleRe;
-                }
+                isMove = true;
+                rectTransform.anchoredPosition += vec2;
+                mainChara.transform.localScale = scaleRe;
+            }
 
-                else if (Input.GetKey(KeyCode.D))
-                {
-                    isMove = true;
-                    rectTransform.anchoredPosition -= vec2;
-                    mainChara.transform.localScale = scale;
-                }
-                else
-                {
-                    isMove = false;
-                }
+            else if (Input.GetKey(KeyCode.D) && !skillAnim && !damageAnim && !downAnim)
+            {
+                isMove = true;
+                rectTransform.anchoredPosition -= vec2;
+                mainChara.transform.localScale = scale;
+            }
+            else
+            {
+                isMove = false;
             }
 
         if(isMove)
@@ -161,7 +166,7 @@ public class MainCharacter_State : MonoBehaviour
                     anim.SetBool("run", false);
                     anim.SetBool("skill", true);
                 }
-                else { anim.SetBool("skill", false); }
+                else { anim.SetBool("skill", false);}
             }
 
         if(isCap)
@@ -224,6 +229,7 @@ public class MainCharacter_State : MonoBehaviour
         if (isCarMove)
         {
             Car.SetActive(true); //車を表示
+
             clearText.SetActive(false); //『「Z」を押す』を非表示に
 
             if (!isRide)
@@ -295,6 +301,7 @@ public class MainCharacter_State : MonoBehaviour
                 isDamage = true;
                 if (isDamage)
                 {
+                    anim.SetBool("run", false);
                     anim.SetTrigger("damage");
                     isDamage = false;
                 }
