@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Fun
+  - PublicPhone
+  - Car
+  - Cap
   layers:
   - Default
   - TransparentFX
@@ -11,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - obj
   - 
   - 
   - 
@@ -40,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obj
+    uniqueID: 3684294147
+    locked: 0
+  - name: MainCharacter
+    uniqueID: 1939074257
     locked: 0
