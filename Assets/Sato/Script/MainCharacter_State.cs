@@ -57,8 +57,7 @@ public class MainCharacter_State : MonoBehaviour
     Vector3 carScale, carScaleRe;
 
     Animator anim = null;
-    bool isDamage, isDown, isSkill, isCap;
-    bool skillAnim, damageAnim, downAnim;
+    bool isDamage, isDown, isSkill, isCap, isJump;
     Rigidbody2D rbody2D;
     [SerializeField] private float jumpForce;
 
@@ -85,9 +84,6 @@ public class MainCharacter_State : MonoBehaviour
         isRide = false;
         isClear = false;
         isCap = false;
-        skillAnim = false;
-        damageAnim = false;
-        downAnim = false;
 
         carScale = new Vector3(2,2,1);
         carScaleRe = new Vector3(-2,2,1);
@@ -98,6 +94,7 @@ public class MainCharacter_State : MonoBehaviour
         isDamage = false;
         isDown = false;
         isSkill = true;
+        isJump = false;
 
         anim.SetBool("down",false);
     }
@@ -119,20 +116,16 @@ public class MainCharacter_State : MonoBehaviour
             StartCoroutine(StartPosReturn());
         }
 
-        if(anim.GetBool("skill") == true) { skillAnim = true;} else skillAnim = false;
-        if(anim.GetBool("damage") == true) { damageAnim = true;} else damageAnim = false;
-        if(anim.GetBool("down") == true) { downAnim = true; } else downAnim = false;
-
         if (!isHit)
         {
-            if (Input.GetKey(KeyCode.A) && !skillAnim && !damageAnim && !downAnim)
+            if (Input.GetKey(KeyCode.A) && !isJump)
             {
                 isMove = true;
                 rectTransform.anchoredPosition += vec2;
                 mainChara.transform.localScale = scaleRe;
             }
 
-            else if (Input.GetKey(KeyCode.D) && !skillAnim && !damageAnim && !downAnim)
+            else if (Input.GetKey(KeyCode.D) && !isJump)
             {
                 isMove = true;
                 rectTransform.anchoredPosition -= vec2;
@@ -190,6 +183,7 @@ public class MainCharacter_State : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            isJump = true;
             boxCollider[0].enabled = true;
             boxCollider[1].enabled = true;
             //rigidbody.AddForce(Vector2.up * 500f);
@@ -205,7 +199,7 @@ public class MainCharacter_State : MonoBehaviour
                 }
             rbody2D.AddForce(transform.up * jumpForce);
         }
-        else { anim.SetBool("jump", false);}
+        else { anim.SetBool("jump", false); isJump = false;}
         }
         else
         {
