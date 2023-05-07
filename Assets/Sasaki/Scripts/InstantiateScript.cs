@@ -5,24 +5,35 @@ using UnityEngine;
 public class InstantiateScript : MonoBehaviour
 {
     [SerializeField]
-    private GameObject prefab;
+    [Tooltip("Prefab")]
+    private GameObject[] prefab;
 
-    [SerializeField]
-    private int n;
-    [SerializeField]
-    private float range;
+    private float time;
 
-    void Start()
+    private float x;
+    private float y;
+
+    public void RandomRange()
     {
-        for (int i = 0; i < n; i++)
-        {
-            Instantiate(prefab, new Vector3(i * range, -3, 0), Quaternion.identity);
-        }
+        x = Random.Range(transform.position.x,x);
+
+        y = Random.Range(-3.0f, 0.0f);
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
+
+        if(time > 3.5f)
+        {
+            RandomRange();
+
+            int item = Random.Range(0, prefab.Length);
+            Instantiate(prefab[item], new Vector2(x, y), prefab[item].transform.rotation);
+
+            time = 0.0f;
+        }
     }
 }
