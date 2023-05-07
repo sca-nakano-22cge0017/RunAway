@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstantiateScript : MonoBehaviour
+public class RandomScript : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Prefab")]
