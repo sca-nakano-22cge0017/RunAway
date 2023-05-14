@@ -9,6 +9,7 @@ TagManager:
   - PublicPhone
   - Car
   - Cap
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - obj
-  - 
+  - gameover
   - 
   - 
   - 
