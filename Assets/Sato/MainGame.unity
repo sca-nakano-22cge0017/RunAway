@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 179552466}
   - component: {fileID: 179552471}
   - component: {fileID: 179552470}
+  - component: {fileID: 179552472}
   - component: {fileID: 179552469}
   - component: {fileID: 179552468}
   - component: {fileID: 179552467}
@@ -454,7 +455,7 @@ MonoBehaviour:
   - {fileID: 709073620}
   - {fileID: 1881489087}
   clearText: {fileID: 1783287366}
-  Car: {fileID: 626465818}
+  Car: {fileID: 0}
   fanManager: {fileID: 2131569123}
   jumpForce: 500
 --- !u!212 &179552471
@@ -508,6 +509,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &179552472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179552465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce220db1ecb1614d917900ae671e9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: {fileID: 707345428}
+  Car: {fileID: 626465818}
+  mainChara: {fileID: 179552465}
 --- !u!1 &208205654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4916,6 +4932,7 @@ GameObject:
   - component: {fileID: 1829104591}
   - component: {fileID: 1829104596}
   - component: {fileID: 1829104595}
+  - component: {fileID: 1829104597}
   - component: {fileID: 1829104594}
   - component: {fileID: 1829104593}
   - component: {fileID: 1829104592}
@@ -5036,7 +5053,7 @@ MonoBehaviour:
   - {fileID: 709073620}
   - {fileID: 1881489087}
   clearText: {fileID: 1783287366}
-  Car: {fileID: 626465818}
+  Car: {fileID: 0}
   fanManager: {fileID: 2131569123}
   jumpForce: 500
 --- !u!212 &1829104596
@@ -5090,6 +5107,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1829104597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829104590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce220db1ecb1614d917900ae671e9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: {fileID: 707345428}
+  Car: {fileID: 626465818}
+  mainChara: {fileID: 1829104590}
 --- !u!1 &1881489087
 GameObject:
   m_ObjectHideFlags: 0
