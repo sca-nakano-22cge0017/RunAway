@@ -151,7 +151,6 @@ public class MainCharacter_State : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    Debug.Log("スキル使用");
                     anim.SetBool("run", false);
                     anim.SetBool("skill", true);
                 }

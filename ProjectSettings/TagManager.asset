@@ -9,7 +9,7 @@ TagManager:
   - PublicPhone
   - Car
   - Cap
-  - Obstacle
+  - Attack
   layers:
   - Default
   - TransparentFX
