@@ -51,6 +51,10 @@ public class MainCharacter_State : MonoBehaviour
     [SerializeField]
     GameObject fanManager;
 
+    [SerializeField]
+    GameObject Attack;
+    Collider2D attackCol;
+
     bool justOnce = true;
     Vector2 vec2;
     Vector3 scale, scaleRe,jump;
@@ -93,6 +97,8 @@ public class MainCharacter_State : MonoBehaviour
         isJump = false;
 
         anim.SetBool("down",false);
+
+        Attack.SetActive(false);
     }
 
     void Update()
@@ -151,8 +157,10 @@ public class MainCharacter_State : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
+                    Attack.SetActive(true);
                     anim.SetBool("run", false);
                     anim.SetBool("skill", true);
+                    StartCoroutine("SkillTime");
                 }
                 else { anim.SetBool("skill", false);}
             }
@@ -206,11 +214,6 @@ public class MainCharacter_State : MonoBehaviour
             }
         }
 
-        if(Input.GetKey(KeyCode.W)) //Debug
-        {
-            isDown = true;
-        }
-
         if(isDown)
         {
             anim.SetBool("down", true);
@@ -240,6 +243,12 @@ public class MainCharacter_State : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         isCap = false;
+    }
+
+    IEnumerator SkillTime()
+    {
+        yield return new WaitForSeconds(1);
+        Attack.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
