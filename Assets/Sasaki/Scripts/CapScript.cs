@@ -22,7 +22,7 @@ public class CapScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            cap.SetActive(false);
+            Destroy(cap); ;
         }
     }
 }
