@@ -6309,6 +6309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 2965522667401926121, guid: c096591ae7a43fd46815e968ab273e4c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c096591ae7a43fd46815e968ab273e4c, type: 3}
 --- !u!1001 &6018567846237274654
