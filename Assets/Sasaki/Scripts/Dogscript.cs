@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dogscript : MonoBehaviour
 {
+    //[SerializeField]
+    //private GameObject Text;
     private Animator anim = null;
     // Start is called before the first frame update
     void Start()
@@ -14,9 +16,17 @@ public class Dogscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Z))
+
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
         {
-            anim.SetBool("run", true);
+            Debug.Log("a");
+            if (Input.GetKey(KeyCode.Z))
+            {
+                anim.SetBool("run", true);
+            }
         }
     }
 }
