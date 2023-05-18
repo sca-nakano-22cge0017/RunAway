@@ -4,29 +4,50 @@ using UnityEngine;
 
 public class Dogscript : MonoBehaviour
 {
-    //[SerializeField]
-    //private GameObject Text;
+    [SerializeField]
+    private GameObject text;
     private Animator anim = null;
+    bool isDog;
+    int n;
     // Start is called before the first frame update
     void Start()
     {
+        isDog = false;
         anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (isDog)
+        {
+            if (Input.GetKey(KeyCode.Z))
+            {
+                anim.SetBool("run", true);
+                text.SetActive(false);
+                n++;
+                Debug.Log(n);
+            }
+        }
+        if(n >= 1)
+        {
+            text.SetActive(false);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("a");
-            if (Input.GetKey(KeyCode.Z))
-            {
-                anim.SetBool("run", true);
-            }
+            text.SetActive(true);
+
+            isDog = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            text.SetActive(false);
         }
     }
 }
