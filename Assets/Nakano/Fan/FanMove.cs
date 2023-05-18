@@ -29,6 +29,7 @@ public class FanMove : MonoBehaviour
         {
             //gameObject.SetActive(false);
             Destroy(gameObject);
+            //“|‚ê‚éƒ‚[ƒVƒ‡ƒ“‚É•ÏX
         }
     }
 }

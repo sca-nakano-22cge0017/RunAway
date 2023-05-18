@@ -37,24 +37,30 @@ public class MainCharacter_State : MonoBehaviour
     HPGuageController hPGuageController;
 
     [SerializeField]
+    ClearPerformance clearPerformance;
+
+    [SerializeField]
+    GameOverController gameOverController;
+
+    [SerializeField]
     GameObject[] publicPhone;
 
     [SerializeField]
     GameObject clearText;
 
     [SerializeField]
-    GameObject Car;
+    GameObject fanManager;
 
     [SerializeField]
-    GameObject fanManager;
+    GameObject Attack;
+    Collider2D attackCol;
 
     bool justOnce = true;
     Vector2 vec2;
     Vector3 scale, scaleRe,jump;
 
     int coinCount = 0;
-    bool isMove, isHit, isCarMove, isRide, isClear;
-    Vector3 carScale, carScaleRe;
+    bool isMove, isHit, isCarMove, isClear;
 
     Animator anim = null;
     bool isDamage, isDown, isSkill, isCap, isJump;
@@ -77,17 +83,11 @@ public class MainCharacter_State : MonoBehaviour
         coinCount = 0;
 
         clearText.SetActive(false);
-        Car.SetActive(false);
         isMove = false;
         isHit = false;
         isCarMove = false;
-        isRide = false;
         isClear = false;
         isCap = false;
-
-        carScale = new Vector3(2,2,1);
-        carScaleRe = new Vector3(-2,2,1);
-        Car.transform.localScale = carScale;
 
         anim = GetComponent<Animator>();
         rbody2D = GetComponent<Rigidbody2D>();
@@ -97,6 +97,8 @@ public class MainCharacter_State : MonoBehaviour
         isJump = false;
 
         anim.SetBool("down",false);
+
+        Attack.SetActive(false);
     }
 
     void Update()
@@ -118,14 +120,14 @@ public class MainCharacter_State : MonoBehaviour
 
         if (!isHit)
         {
-            if (Input.GetKey(KeyCode.A) && !isJump)
+            if (Input.GetKey(KeyCode.A))
             {
                 isMove = true;
                 rectTransform.anchoredPosition += vec2;
                 mainChara.transform.localScale = scaleRe;
             }
 
-            else if (Input.GetKey(KeyCode.D) && !isJump)
+            else if (Input.GetKey(KeyCode.D))
             {
                 isMove = true;
                 rectTransform.anchoredPosition -= vec2;
@@ -155,9 +157,10 @@ public class MainCharacter_State : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    Debug.Log("スキル使用");
+                    Attack.SetActive(true);
                     anim.SetBool("run", false);
                     anim.SetBool("skill", true);
+                    StartCoroutine("SkillTime");
                 }
                 else { anim.SetBool("skill", false);}
             }
@@ -214,48 +217,14 @@ public class MainCharacter_State : MonoBehaviour
         if(isDown)
         {
             anim.SetBool("down", true);
-            //ゲームオーバーシーンへ遷移
+            gameOverController.GameOver();
+            Destroy(fanManager);
         }
-
-        Transform carPos = Car.transform;
-        Vector3 pos = carPos.position;
 
         if (isCarMove)
         {
-            Car.SetActive(true); //車を表示
-
             clearText.SetActive(false); //『「Z」を押す』を非表示に
-
-            if (!isRide)
-            {
-                if (pos.x >= 0)
-                {
-                    pos.x -= 10 * Time.deltaTime;
-                    carPos.position = pos;
-                }
-                else
-                {
-                    SpriteRenderer main = mainChara.GetComponent<SpriteRenderer>();
-                    main.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                    isRide = true;
-                }
-            }
-        }
-
-        if (isRide) //主人公が車に乗ったら
-        {
-            Car.transform.localScale = carScaleRe; //画像反転
-
-            if (pos.x <= 15)
-            {
-                pos.x += 10 * Time.deltaTime;
-                carPos.position = pos;
-            }
-            else
-            {
-                fade.FadeIn(1f);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("ClearScene");
-            }
+            clearPerformance.CarMove();
         }
     }
     
@@ -274,6 +243,12 @@ public class MainCharacter_State : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         isCap = false;
+    }
+
+    IEnumerator SkillTime()
+    {
+        yield return new WaitForSeconds(1);
+        Attack.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
