@@ -298,10 +298,10 @@ public class MainCharacter_State : MonoBehaviour
                 isClear = true;
             }
 
-            /*if(collision.CompareTag("Cap"))
+            if(collision.CompareTag("Cap"))
             {
                 isCap = true;
-            }*/
+            }
 
             if (collision.CompareTag("PublicPhone"))
             {
