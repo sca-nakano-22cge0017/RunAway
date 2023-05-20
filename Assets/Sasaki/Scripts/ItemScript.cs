@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    public GameObject[] itemPrefab;
+    [SerializeField] GameObject[] itemPrefab;
+    [SerializeField] GameObject dog;
     int number;
     [SerializeField] private float distanceMin;
     [SerializeField] private float distanceMax;
     private float distance;
     private float time;
+    private float delTime;
     [SerializeField] private float timeInterval;
     [SerializeField] private GameObject charaA;
     [SerializeField] private GameObject charaB;
@@ -40,6 +42,7 @@ public class ItemScript : MonoBehaviour
     {
         selectChara = SelectSceneManager.selectCharacter;
         time = timeInterval;
+        delTime = 3;
     }
 
     void Update()
@@ -54,5 +57,16 @@ public class ItemScript : MonoBehaviour
                 Instantiate(itemPrefab[number], new Vector3(distance + chara_x, -2.3f, 0), transform.rotation);
                 time = timeInterval;
             }
+
+        if (chara_x >= dog.transform.position.x)
+        {
+            Destroy(dog, 3);
+        }
     }
+
+    //ÉJÉÅÉâÇ…âfÇÁÇ»Ç≠Ç»Ç¡ÇΩÇÁ
+    //void OnBecameInvisible()
+    //{
+    //    GameObject.Destroy(dog);
+    //}
 }

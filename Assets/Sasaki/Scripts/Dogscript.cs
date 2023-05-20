@@ -5,6 +5,8 @@ using UnityEngine;
 public class Dogscript : MonoBehaviour
 {
     [SerializeField]
+    private float speed = 4;
+    [SerializeField]
     private GameObject text;
     private Animator anim = null;
     bool isDog;
