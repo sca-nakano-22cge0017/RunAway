@@ -295,7 +295,6 @@ public class MainCharacter_State : MonoBehaviour
                 {
                     publicPhone[i].SetActive(true);
                 }
-                isClear = true;
             }
 
             if(collision.CompareTag("Cap"))
@@ -305,6 +304,7 @@ public class MainCharacter_State : MonoBehaviour
 
             if (collision.CompareTag("PublicPhone"))
             {
+                isClear = true;
                 isHit = true;
                 anim.SetBool("run", false);
                 clearText.SetActive(true);

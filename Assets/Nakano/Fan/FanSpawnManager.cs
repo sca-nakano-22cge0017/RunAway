@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FanSpawnManager : MonoBehaviour
 {
-    public GameObject[] fanPrefab;
+    public GameObject[] fanPrefabA;
+    public GameObject[] fanPrefabB;
     int number;
     [SerializeField] private float distanceMin;
     [SerializeField] private float distanceMax;
@@ -12,9 +13,12 @@ public class FanSpawnManager : MonoBehaviour
     private float time;
     [SerializeField] private float timeInterval;
 
+    int selectCharacter = SelectSceneManager.selectCharacter;
+
     void Start()
     {
         time = timeInterval;
+        //selectCharacter = 1; //Debug
     }
 
     void Update()
@@ -22,10 +26,21 @@ public class FanSpawnManager : MonoBehaviour
         time -= Time.deltaTime;
         if(time <= 0)
         {
-            distance = Random.Range(distanceMin, distanceMax);
-            number = Random.Range(0, fanPrefab.Length);
-            Instantiate(fanPrefab[number], new Vector3(distance, -2.3f, 0), transform.rotation);
-            time = timeInterval;
+            if(selectCharacter == 1)
+            {
+                Debug.Log("a");
+                distance = Random.Range(distanceMin, distanceMax);
+                number = Random.Range(0, fanPrefabA.Length);
+                Instantiate(fanPrefabA[number], new Vector3(distance, -2.3f, 0), transform.rotation);
+                time = timeInterval;
+            }
+            if(selectCharacter == 2)
+            {
+                distance = Random.Range(distanceMin, distanceMax);
+                number = Random.Range(0, fanPrefabB.Length);
+                Instantiate(fanPrefabB[number], new Vector3(distance, -2.3f, 0), transform.rotation);
+                time = timeInterval;
+            }
         }
     }
 }
