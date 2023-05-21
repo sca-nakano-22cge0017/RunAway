@@ -27,7 +27,7 @@ public class FanMove : MonoBehaviour
         Debug.Log(collision.gameObject.name);
         if(collision.gameObject.name == "Attack")
         {
-            //gameObject.SetActive(false);
+            Debug.Log("col");
             Destroy(gameObject);
             //“|‚ê‚éƒ‚[ƒVƒ‡ƒ“‚É•ÏX
         }
