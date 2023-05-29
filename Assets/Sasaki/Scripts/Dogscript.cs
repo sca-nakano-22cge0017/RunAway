@@ -11,7 +11,7 @@ public class Dogscript : MonoBehaviour
     private Animator anim = null;
     bool isDog;
     int n;
-    // Start is called before the first frame update
+
     void Start()
     {
         isDog = false;
@@ -21,6 +21,9 @@ public class Dogscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isDog);
+
+        //Œ¢‚ÉG‚Á‚½‚ç
         if (isDog)
         {
             if (Input.GetKey(KeyCode.Z))
@@ -28,10 +31,9 @@ public class Dogscript : MonoBehaviour
                 anim.SetBool("run", true);
                 text.SetActive(false);
                 n++;
-                Debug.Log(n);
             }
         }
-        if(n >= 1)
+        if (n >= 1)
         {
             text.SetActive(false);
         }
@@ -50,6 +52,11 @@ public class Dogscript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             text.SetActive(false);
+            isDog = false;
+        }
+        if (!isDog)
+        {
+            Destroy(this.gameObject,10);
         }
     }
 }

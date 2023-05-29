@@ -10,6 +10,7 @@ TagManager:
   - Car
   - Cap
   - Attack
+  - Dog
   layers:
   - Default
   - TransparentFX

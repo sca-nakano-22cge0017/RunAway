@@ -14,7 +14,7 @@ public class TestPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 position = transform.position;
+        Vector2 position = transform.localPosition;
 
         if (Input.GetKey(KeyCode.D))
         {
@@ -24,6 +24,6 @@ public class TestPlayerScript : MonoBehaviour
         {
             position.x -= speed;
         }
-        transform.position = position;
+        transform.localPosition = position;
     }
 }
