@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8662633361447347455}
   - component: {fileID: 1151386786796228042}
   m_Layer: 0
-  m_Name: "\u72AC-\u5BDD\u308B"
+  m_Name: Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,6 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   text: {fileID: 5893348484610607692}
+  player: {fileID: 7178352990448239467, guid: 306be4344bd0d674d855784b2b53c3ad, type: 3}
+  dog: {fileID: 706431267043662860}
 --- !u!61 &1151386786796228042
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -311,9 +313,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8916248258705829956}
   - component: {fileID: 5309877600101701544}
+  - component: {fileID: 2588855275072189114}
   m_Layer: 0
   m_Name: DogAttack
-  m_TagString: Dog
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,6 +361,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 15, y: 6}
   m_EdgeRadius: 0
+--- !u!114 &2588855275072189114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580884420850547084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6bd5a55a1ef1d45bf7fbc61416676e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7834369299089287082
 GameObject:
   m_ObjectHideFlags: 0

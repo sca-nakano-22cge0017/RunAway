@@ -9,20 +9,27 @@ public class Dogscript : MonoBehaviour
     [SerializeField]
     private GameObject text;
     private Animator anim = null;
-    bool isDog;
+    [SerializeField]
+    private GameObject charaA;
+    [SerializeField]
+    private GameObject dog;
+
+    private bool isDog;
+    public static bool dogAttack;
     int n;
 
     void Start()
     {
         isDog = false;
+        dogAttack = false;
         anim = GetComponent<Animator>();
+        //ƒqƒGƒ‰ƒ‹ƒL[‚©‚ç’T‚·
+        charaA = GameObject.Find("player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isDog);
-
         //Œ¢‚ÉG‚Á‚½‚ç
         if (isDog)
         {
@@ -30,6 +37,7 @@ public class Dogscript : MonoBehaviour
             {
                 anim.SetBool("run", true);
                 text.SetActive(false);
+                dogAttack = true;
                 n++;
             }
         }
@@ -54,9 +62,21 @@ public class Dogscript : MonoBehaviour
             text.SetActive(false);
             isDog = false;
         }
-        if (!isDog)
+
+        if (charaA.transform.position.x > dog.transform.position.x)
         {
-            Destroy(this.gameObject,10);
+            Destroy(this.gameObject, 7f);
+        }
+    }
+    public bool TriggerCheck()
+    {
+        if (dogAttack)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
