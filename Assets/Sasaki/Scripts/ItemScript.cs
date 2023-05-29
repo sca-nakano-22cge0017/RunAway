@@ -1,28 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameManager;
 
 public class ItemScript : MonoBehaviour
 {
     [SerializeField] GameObject[] itemPrefab;
-    [SerializeField] GameObject dog;
     int number;
     [SerializeField] private float distanceMin;
     [SerializeField] private float distanceMax;
     private float distance;
-    private float time;
-    private float delTime;
-    [SerializeField] private float timeInterval;
     [SerializeField] private GameObject charaA;
     [SerializeField] private GameObject charaB;
     [SerializeField] private GameObject chara;
     float chara_x;
-    int count;
     private int selectChara;
-
-    //charaÇÃç¿ïWéÊìæ
-    private void charas()
+    private void Charas()
     {
+        //charaÇÃç¿ïWéÊìæ
         chara_x = chara.transform.position.x;
         switch (selectChara)
         {
@@ -36,37 +31,28 @@ public class ItemScript : MonoBehaviour
                 chara_x = charaA.transform.position.x;
                 break;
         }
+
+        //óêêî
+        distance = Random.Range(distanceMin, distanceMax);
+        number = Random.Range(0, itemPrefab.Length);
+        Instantiate(itemPrefab[number], new Vector3(distance + chara_x, -2.3f, 0), transform.rotation);
     }
 
     void Start()
     {
         selectChara = SelectSceneManager.selectCharacter;
-        time = timeInterval;
-        delTime = 3;
+        StartCoroutine("DogCount");
     }
 
     void Update()
     {
-        charas();
-
-        time -= Time.deltaTime;
-            if (time <= 0)
-            {
-                distance = Random.Range(distanceMin, distanceMax);
-                number = Random.Range(0, itemPrefab.Length);
-                Instantiate(itemPrefab[number], new Vector3(distance + chara_x, -2.3f, 0), transform.rotation);
-                time = timeInterval;
-            }
-
-        if (chara_x >= dog.transform.position.x)
+    }
+    IEnumerator DogCount()
+    {
+        for (int count = 0; count < 5; count++)
         {
-            Destroy(dog, 3);
+            yield return new WaitForSeconds(3.5f);
+            Charas();
         }
     }
-
-    //ÉJÉÅÉâÇ…âfÇÁÇ»Ç≠Ç»Ç¡ÇΩÇÁ
-    //void OnBecameInvisible()
-    //{
-    //    GameObject.Destroy(dog);
-    //}
 }
