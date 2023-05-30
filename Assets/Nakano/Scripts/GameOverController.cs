@@ -12,7 +12,7 @@ public class GameOverController : MonoBehaviour
     float y;
     [SerializeField] float speed;
     [SerializeField] int wait = 5;
-
+    
     void Start()
     {
         //anim = GetComponent<Animator>();
