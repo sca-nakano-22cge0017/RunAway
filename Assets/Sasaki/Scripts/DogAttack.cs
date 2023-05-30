@@ -6,28 +6,27 @@ public class DogAttack : MonoBehaviour
 {
     private Dogscript dog;
     //ファンのオブジェクト名
-    private GameObject fanA;
+    //private GameObject fanA;
 
     bool boxCheck;
-    // Start is called before the first frame update
+
     void Start()
     {
-        dog = GameObject.Find("Dog").GetComponent<Dogscript>();
+        dog = GameObject.FindWithTag("Dog").GetComponent<Dogscript>();
 
         //ヒエラルキーのfanのオブジェクト名
-        fanA = GameObject.Find("fanA");
+        //fanA = GameObject.Find("fanA");
 
         boxCheck = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (dog.TriggerCheck() && boxCheck)
+        /*if (dog.TriggerCheck() && boxCheck)
         {
             //ファンを消す
             Destroy(fanA.gameObject);
-        }
+        }*/
 
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -35,6 +34,11 @@ public class DogAttack : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             boxCheck = true;
+        }
+        
+        if(other.gameObject.tag == "Fun");
+        {
+            Debug.Log("dog");
         }
     }
 }

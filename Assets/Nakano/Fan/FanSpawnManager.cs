@@ -18,7 +18,7 @@ public class FanSpawnManager : MonoBehaviour
     void Start()
     {
         time = timeInterval;
-        //selectCharacter = 1; //Debug
+        selectCharacter = 1; //Debug
     }
 
     void Update()
@@ -28,7 +28,6 @@ public class FanSpawnManager : MonoBehaviour
         {
             if(selectCharacter == 1)
             {
-                Debug.Log("a");
                 distance = Random.Range(distanceMin, distanceMax);
                 number = Random.Range(0, fanPrefabA.Length);
                 Instantiate(fanPrefabA[number], new Vector3(distance, -2.3f, 0), transform.rotation);

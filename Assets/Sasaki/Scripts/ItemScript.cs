@@ -12,13 +12,13 @@ public class ItemScript : MonoBehaviour
     private float distance;
     [SerializeField] private GameObject charaA;
     [SerializeField] private GameObject charaB;
-    [SerializeField] private GameObject chara;
+    //[SerializeField] private GameObject chara;
     float chara_x;
     private int selectChara;
     private void Charas()
     {
         //charaÇÃç¿ïWéÊìæ
-        chara_x = chara.transform.position.x;
+        //chara_x = chara.transform.position.x;
         switch (selectChara)
         {
             case 1:
@@ -35,7 +35,7 @@ public class ItemScript : MonoBehaviour
         //óêêî
         distance = Random.Range(distanceMin, distanceMax);
         number = Random.Range(0, itemPrefab.Length);
-        Instantiate(itemPrefab[number], new Vector3(distance + chara_x, -2.3f, 0), transform.rotation);
+        Instantiate(itemPrefab[number], new Vector3(distance + chara_x, -2.6f, 0), transform.rotation);
     }
 
     void Start()
@@ -47,6 +47,7 @@ public class ItemScript : MonoBehaviour
     void Update()
     {
     }
+
     IEnumerator DogCount()
     {
         for (int count = 0; count < 5; count++)
