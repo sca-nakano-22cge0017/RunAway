@@ -55,6 +55,12 @@ public class MainCharacter_State : MonoBehaviour
     GameObject Attack;
     Collider2D attackCol;
 
+    [SerializeField] 
+    GameObject Cap;
+
+    [SerializeField]
+    GameObject Dog;
+
     bool justOnce = true;
     Vector2 vec2;
     Vector3 scale, scaleRe,jump;
@@ -63,7 +69,7 @@ public class MainCharacter_State : MonoBehaviour
     bool isMove, isHit, isCarMove, isClear;
 
     Animator anim = null;
-    bool isDamage, isDown, isSkill, isCap, isJump;
+    bool isDamage, isDown, isSkill, isCap;
     Rigidbody2D rbody2D;
     [SerializeField] private float jumpForce;
 
@@ -94,7 +100,6 @@ public class MainCharacter_State : MonoBehaviour
         isDamage = false;
         isDown = false;
         isSkill = true;
-        isJump = false;
 
         anim.SetBool("down",false);
 
@@ -123,8 +128,10 @@ public class MainCharacter_State : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 isMove = true;
-                rectTransform.anchoredPosition += vec2;
+                rectTransform.anchoredPosition += vec2; //”wŒiˆÚ“®
                 mainChara.transform.localScale = scaleRe;
+                
+
             }
 
             else if (Input.GetKey(KeyCode.D))
@@ -132,6 +139,8 @@ public class MainCharacter_State : MonoBehaviour
                 isMove = true;
                 rectTransform.anchoredPosition -= vec2;
                 mainChara.transform.localScale = scale;
+                Cap.transform.position -= new Vector3(speed, 0, 0);
+                Dog.transform.position += new Vector3(speed, 0, 0);
             }
             else
             {
@@ -186,7 +195,6 @@ public class MainCharacter_State : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isJump = true;
             boxCollider[0].enabled = true;
             boxCollider[1].enabled = true;
             //rigidbody.AddForce(Vector2.up * 500f);
@@ -202,7 +210,7 @@ public class MainCharacter_State : MonoBehaviour
                 }
             rbody2D.AddForce(transform.up * jumpForce);
         }
-        else { anim.SetBool("jump", false); isJump = false;}
+        else { anim.SetBool("jump", false);}
         }
         else
         {
@@ -279,8 +287,11 @@ public class MainCharacter_State : MonoBehaviour
         }
         else
         {
-            collision.gameObject.SetActive(false);
-            coinCount++;
+            if(collision.CompareTag("Coin"))
+            {
+                collision.gameObject.SetActive(false);
+                coinCount++;
+            }
 
             if(coinCount >= 10)
             {

@@ -12,13 +12,13 @@ public class ItemScript : MonoBehaviour
     private float distance;
     [SerializeField] private GameObject charaA;
     [SerializeField] private GameObject charaB;
-    [SerializeField] private GameObject chara;
+    //[SerializeField] private GameObject chara;
     float chara_x;
     private int selectChara;
     private void Charas()
     {
         //charaÇÃç¿ïWéÊìæ
-        chara_x = chara.transform.position.x;
+        //chara_x = chara.transform.position.x;
         switch (selectChara)
         {
             case 1:
