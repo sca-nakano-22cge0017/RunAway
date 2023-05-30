@@ -69,7 +69,7 @@ public class MainCharacter_State : MonoBehaviour
     bool isMove, isHit, isCarMove, isClear;
 
     Animator anim = null;
-    bool isDamage, isDown, isSkill, isCap;
+    bool isDamage, isDown, isSkill, isCap, isDog;
     Rigidbody2D rbody2D;
     [SerializeField] private float jumpForce;
 
@@ -100,6 +100,7 @@ public class MainCharacter_State : MonoBehaviour
         isDamage = false;
         isDown = false;
         isSkill = true;
+        isDog = false;
 
         anim.SetBool("down",false);
 
@@ -125,16 +126,14 @@ public class MainCharacter_State : MonoBehaviour
 
         if (!isHit)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) && !isDog)
             {
                 isMove = true;
                 rectTransform.anchoredPosition += vec2; //”wŒiˆÚ“®
                 mainChara.transform.localScale = scaleRe;
-                
-
             }
 
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D) && !isDog)
             {
                 isMove = true;
                 rectTransform.anchoredPosition -= vec2;
@@ -324,7 +323,20 @@ public class MainCharacter_State : MonoBehaviour
                     publicPhone[i].SetActive(true);
                 }
             }
+
+            if(collision.CompareTag("Dog"))
+            {
+                isDog = true;
+            }
         }   
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.CompareTag("Dog"))
+        {
+            isDog = false;
+        }
     }
 
     public void HpDecide()

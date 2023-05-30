@@ -2716,16 +2716,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827635107}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde146f56e88e624581642e37d9fd909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab:
-  - {fileID: 0}
-  - {fileID: 0}
-  distanceMin: 10
-  distanceMax: 15
+  - {fileID: 9184336053906385311, guid: 2d0e1811ed9dbe74eac61c09c1981f12, type: 3}
+  - {fileID: 706431267043662860, guid: c40b619cac5863a4cbc5ecbe940c0c1a, type: 3}
+  distanceMin: 20
+  distanceMax: 25
   charaA: {fileID: 1829104590}
   charaB: {fileID: 179552465}
 --- !u!1001 &847388048
