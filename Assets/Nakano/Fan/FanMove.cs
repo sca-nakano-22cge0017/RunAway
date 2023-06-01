@@ -3,33 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FanMove : MonoBehaviour
+namespace fanMove
 {
-    [SerializeField] private float speed;
-
-    void Start()
+    public class FanMove : MonoBehaviour
     {
+        [SerializeField] private float speed;
 
-    }
-
-    void Update()
-    {
-        transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
-    
-        if(transform.position.x <= -10)
+        void Start()
         {
-            Destroy(gameObject);
+
+        }
+
+        void Update()
+        {
+            transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
+
+            if (transform.position.x <= -10)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Debug.Log(collision.gameObject.name);
+            if (collision.gameObject.name == "Attack")
+            {
+                Debug.Log("col");
+                Destroy(gameObject);
+                //倒れるモーションに変更
+            }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        if(collision.gameObject.name == "Attack")
-        {
-            Debug.Log("col");
-            Destroy(gameObject);
-            //倒れるモーションに変更
-        }
-    }
 }
+
