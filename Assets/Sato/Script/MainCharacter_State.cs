@@ -55,12 +55,6 @@ public class MainCharacter_State : MonoBehaviour
     GameObject Attack;
     Collider2D attackCol;
 
-    [SerializeField] 
-    GameObject Cap;
-
-    [SerializeField]
-    GameObject Dog;
-
     bool justOnce = true;
     Vector2 vec2;
     Vector3 scale, scaleRe,jump;
@@ -138,8 +132,6 @@ public class MainCharacter_State : MonoBehaviour
                 isMove = true;
                 rectTransform.anchoredPosition -= vec2;
                 mainChara.transform.localScale = scale;
-                Cap.transform.position -= new Vector3(speed, 0, 0);
-                Dog.transform.position += new Vector3(speed, 0, 0);
             }
             else
             {
