@@ -14,9 +14,19 @@ public class FanMove : MonoBehaviour
 
     void Update()
     {
-        transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
-    
-        if(transform.position.x <= -10)
+        //transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
+
+        if(Input.GetKey(KeyCode.A))
+        {
+            transform.position -= new Vector3(speed * Time.deltaTime * 0.3f, 0, 0);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.position -= new Vector3(speed * Time.deltaTime * 1.5f, 0, 0);
+        }
+        else { transform.position -= new Vector3(speed * Time.deltaTime, 0, 0); }
+
+        if (transform.position.x <= -10)
         {
             Destroy(gameObject);
         }
