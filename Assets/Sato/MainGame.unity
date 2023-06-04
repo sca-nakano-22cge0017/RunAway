@@ -2726,6 +2726,7 @@ MonoBehaviour:
   distanceMax: 25
   charaA: {fileID: 1829104590}
   charaB: {fileID: 179552465}
+  y: -3.05
 --- !u!1001 &847388048
 PrefabInstance:
   m_ObjectHideFlags: 0
