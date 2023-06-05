@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3859249782253521177}
   - component: {fileID: 3859249782253521182}
-  - component: {fileID: 3859249782253521183}
   - component: {fileID: 6643366819688181763}
+  - component: {fileID: 731212029405626116}
   m_Layer: 0
   m_Name: FanB
   m_TagString: Fun
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3859249782253521183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3859249782253521180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b06abdba0d54741aa8c8c520a175e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!61 &6643366819688181763
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3830886, y: 3.6346202}
   m_EdgeRadius: 0
+--- !u!114 &731212029405626116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859249782253521180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99b19fc785e1f48a79ec71e31fe7bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5

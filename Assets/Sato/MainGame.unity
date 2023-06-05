@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 249440466}
   m_Layer: 5
   m_Name: Coin (6)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1375,7 +1375,7 @@ GameObject:
   - component: {fileID: 383814524}
   m_Layer: 5
   m_Name: Coin (8)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1491,7 +1491,7 @@ GameObject:
   - component: {fileID: 455312630}
   m_Layer: 5
   m_Name: Coin (7)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1961,7 +1961,7 @@ GameObject:
   - component: {fileID: 589364104}
   m_Layer: 5
   m_Name: Coin (5)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2338,7 +2338,7 @@ GameObject:
   - component: {fileID: 643125667}
   m_Layer: 5
   m_Name: Coin (2)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2671,6 +2671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 827635109}
   - component: {fileID: 827635108}
+  - component: {fileID: 827635110}
   m_Layer: 0
   m_Name: CharaManager
   m_TagString: Untagged
@@ -2699,13 +2700,32 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827635107}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 19.517067, y: -4.039202, z: 293.36386}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &827635110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827635107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde146f56e88e624581642e37d9fd909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab:
+  - {fileID: 9184336053906385311, guid: 2d0e1811ed9dbe74eac61c09c1981f12, type: 3}
+  - {fileID: 706431267043662860, guid: c40b619cac5863a4cbc5ecbe940c0c1a, type: 3}
+  distanceMin: 20
+  distanceMax: 25
+  charaA: {fileID: 1829104590}
+  charaB: {fileID: 179552465}
 --- !u!1001 &847388048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2806,7 +2826,7 @@ GameObject:
   - component: {fileID: 865278513}
   m_Layer: 5
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3509,7 +3529,7 @@ GameObject:
   - component: {fileID: 1133940298}
   m_Layer: 5
   m_Name: Coin (1)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4524,7 +4544,7 @@ GameObject:
   - component: {fileID: 1618403969}
   m_Layer: 5
   m_Name: Coin (3)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4640,7 +4660,7 @@ GameObject:
   - component: {fileID: 1686521332}
   m_Layer: 5
   m_Name: Coin (9)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6073,7 +6093,7 @@ GameObject:
   - component: {fileID: 2127151333}
   m_Layer: 5
   m_Name: Coin (4)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

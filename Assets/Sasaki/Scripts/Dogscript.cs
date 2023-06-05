@@ -9,7 +9,7 @@ public class Dogscript : MonoBehaviour
     [SerializeField]
     private GameObject text;
     private Animator anim = null;
-    [SerializeField]
+    //[SerializeField]
     private GameObject charaA;
     [SerializeField]
     private GameObject dog;
@@ -24,7 +24,7 @@ public class Dogscript : MonoBehaviour
         dogAttack = false;
         anim = GetComponent<Animator>();
         //ÉqÉGÉâÉãÉLÅ[Ç©ÇÁíTÇ∑
-        charaA = GameObject.Find("player");
+        charaA = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame

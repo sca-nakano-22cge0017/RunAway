@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9016477356766227490}
   - component: {fileID: 7940691175229535621}
-  - component: {fileID: -1953169881217847738}
   - component: {fileID: 4088483382712504336}
+  - component: {fileID: 2312484902931141443}
   m_Layer: 0
   m_Name: FanA-A
   m_TagString: Fun
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1953169881217847738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3113763520323419627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b06abdba0d54741aa8c8c520a175e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!61 &4088483382712504336
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8992392, y: 3.6684663}
   m_EdgeRadius: 0
+--- !u!114 &2312484902931141443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113763520323419627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99b19fc785e1f48a79ec71e31fe7bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
