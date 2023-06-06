@@ -15,6 +15,8 @@ public class ItemScript : MonoBehaviour
     //[SerializeField] private GameObject chara;
     float chara_x;
     private int selectChara;
+
+    [SerializeField] float y;
     private void Charas()
     {
         //chara‚ÌÀ•Wæ“¾
@@ -35,7 +37,7 @@ public class ItemScript : MonoBehaviour
         //—”
         distance = Random.Range(distanceMin, distanceMax);
         number = Random.Range(0, itemPrefab.Length);
-        Instantiate(itemPrefab[number], new Vector3(distance + chara_x, -2.6f, 0), transform.rotation);
+        Instantiate(itemPrefab[number], new Vector3(distance + chara_x, y, 0), transform.rotation);
     }
 
     void Start()
