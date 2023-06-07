@@ -12,6 +12,8 @@ TagManager:
   - Attack
   - Dog
   - Coin
+  - DogAttack
+  - DamageFun
   layers:
   - Default
   - TransparentFX

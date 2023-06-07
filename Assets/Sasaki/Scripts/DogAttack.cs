@@ -38,7 +38,7 @@ public class DogAttack : MonoBehaviour
         
         if(other.gameObject.tag == "Fun");
         {
-            Debug.Log("dog");
+            //Debug.Log("dog");
         }
     }
 }

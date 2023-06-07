@@ -14,6 +14,8 @@ public class Dogscript : MonoBehaviour
     [SerializeField]
     private GameObject dog;
 
+    GameObject child;
+
     private bool isDog;
     public static bool dogAttack;
     int n;
@@ -25,6 +27,9 @@ public class Dogscript : MonoBehaviour
         anim = GetComponent<Animator>();
         //ÉqÉGÉâÉãÉLÅ[Ç©ÇÁíTÇ∑
         charaA = GameObject.FindWithTag("Player");
+
+        child = transform.Find("DogAttack").gameObject;
+        child.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,6 +40,7 @@ public class Dogscript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Z))
             {
+                child.SetActive(true);
                 anim.SetBool("run", true);
                 text.SetActive(false);
                 dogAttack = true;
