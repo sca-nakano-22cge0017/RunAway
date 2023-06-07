@@ -9,26 +9,41 @@ public class animation : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        anim.SetBool("walk", true);
     }
 
 
     void Update()
     {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+
+        //if (collision.gameObject.CompareTag("Player"))
         if (Input.GetKeyDown(KeyCode.A))
         {
+            anim.SetBool("walk", false);
             anim.SetBool("attack", true);
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else anim.SetBool("attack", false);
+
+        //if (collision.gameObject.CompareTag("Dog"))
+        if (Input.GetKeyDown(KeyCode.S))
         {
+            anim.SetBool("walk", false);
             anim.SetBool("scary", true);
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else anim.SetBool("scary", false);
+
+        //if (collision.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.D))
         {
+            anim.SetBool("walk", false);
             anim.SetBool("down", true);
         }
-        else
-        {
-            anim.SetBool("attack", false);
-        }
+        else anim.SetBool("down", false);
     }
 }
