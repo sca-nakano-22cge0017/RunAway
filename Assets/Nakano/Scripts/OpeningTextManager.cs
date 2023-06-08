@@ -19,6 +19,9 @@ public class OpeningTextManager : MonoBehaviour
 
     private void Start()
     {
+        textNumber = 0;
+        textCharNumber = 0;
+        displayTextSpeed = 0;
     }
 
     void Update()
