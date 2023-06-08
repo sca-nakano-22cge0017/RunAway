@@ -12,7 +12,7 @@ public class FanMove : MonoBehaviour
     int selectCharacter = SelectSceneManager.selectCharacter;
 
     [SerializeField] GameObject playerA;
-    [SerializeField] GameObject playerB;
+    //[SerializeField] GameObject playerB;
     float posP, pos;
 
     void Start()
@@ -25,7 +25,7 @@ public class FanMove : MonoBehaviour
 
         selectCharacter = 1;
 
-        switch (selectCharacter)
+/*        switch (selectCharacter)
         {
             case 1: 
                 posP = playerA.GetComponent<Transform>().position.x;
@@ -33,7 +33,7 @@ public class FanMove : MonoBehaviour
             case 2:
                 posP = playerB.GetComponent<Transform>().position.x;
             break;
-        }
+        }*/
 
         pos = this.GetComponent<Transform>().position.x;
     }

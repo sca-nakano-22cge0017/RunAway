@@ -14,6 +14,7 @@ public class CharaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("í Ç¡ÇΩÅI");
         if (selectChara == 1)
         {
             A.gameObject.SetActive(true);

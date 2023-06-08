@@ -60,7 +60,7 @@ public class MainCharacter_State : MonoBehaviour
     Vector3 scale, scaleRe,jump;
 
     int coinCount = 0;
-    bool isMove, isHit, isCarMove, isClear;
+    bool isMove, isHit, isCarMove, isClear,isGround = false;
 
     Animator anim = null;
     bool isDamage, isDown, isSkill, isCap, isDog;
@@ -184,12 +184,14 @@ public class MainCharacter_State : MonoBehaviour
                 isCap = true;
             }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
-            boxCollider[0].enabled = true;
-            boxCollider[1].enabled = true;
-            //rigidbody.AddForce(Vector2.up * 500f);
-            if(!isCap)
+             isGround = false;
+             //boxCollider[0].enabled = true;
+             //boxCollider[1].enabled = true; 
+                //rigidbody.AddForce(Vector2.up * 500f);
+                if (!isCap)
                 {
                     anim.SetBool("run", false);
                     anim.SetBool("jump", true);
@@ -203,6 +205,7 @@ public class MainCharacter_State : MonoBehaviour
         }
         else { anim.SetBool("jump", false);}
         }
+
         else
         {
             Destroy(fanManager);
@@ -252,8 +255,9 @@ public class MainCharacter_State : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.name == "Ground")
+        if(collision.gameObject.CompareTag("Ground"))
         {
+            isGround = true;
             boxCollider[0].enabled = false;
             boxCollider[1].enabled = false;
         }

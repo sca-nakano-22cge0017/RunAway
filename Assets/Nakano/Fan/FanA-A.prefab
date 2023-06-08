@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerA: {fileID: 0}
+  playerA: {fileID: 7178352990448239467, guid: 306be4344bd0d674d855784b2b53c3ad, type: 3}
   playerB: {fileID: 0}
 --- !u!95 &7444973302879660813
 Animator:

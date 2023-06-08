@@ -31,7 +31,7 @@ public class OpeningTextManager : MonoBehaviour
         if (!isStop)
         {
             displayTextSpeed++;
-            if (displayTextSpeed % speed * Time.deltaTime == 0)
+            if (displayTextSpeed % speed == 0)
             {
                 if (textCharNumber != texts[textNumber].Length) //•\¦•¶š”‚ª•¶š—ñ‚Ì’·‚³‚ÆˆÙ‚È‚é‚Æ‚«
                 {
